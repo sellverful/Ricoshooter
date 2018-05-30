@@ -3,7 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Bullet
+  - Wall
+  - Box
+  - Plane
+  - Defence
+  - Door
+  - Boss
+  - Checkpoint
+  - Pause
+  - Restart
+  - Heart1
+  - Heart2
+  - Heart3
+  - CheckpointManager
+  - Fire
+  - pause
   layers:
   - Default
   - TransparentFX
@@ -13,7 +30,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Boss
   - 
   - 
   - 

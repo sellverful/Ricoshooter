@@ -35,7 +35,7 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetButton("SecondGun"))
         {
-            currShootType = ShootType.SineShotgun;
+            //currShootType = ShootType.SineShotgun;
         }
     }
     void ShootingTypes()
@@ -115,6 +115,7 @@ public class Gun : MonoBehaviour
 
             if (shotCounter <= 0)
             {
+                GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 for (int i = 0; i < 5; i++)
                 {
                     InstansiateSineShotGunBullet((i - 2) * 5);
@@ -134,6 +135,7 @@ public class Gun : MonoBehaviour
 
             if (shotCounter <= 0)
             {
+                GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 InstansiateDoubleBullet();
                 shotCounter = timeBetweenShots;
             }
@@ -149,6 +151,7 @@ public class Gun : MonoBehaviour
 
             if (shotCounter <= 0)
             {
+                GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 InstansiateAroundBullet();
                 shotCounter = timeBetweenShotsAround;
             }

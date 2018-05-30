@@ -9,6 +9,8 @@ public class ShowMuscles : MonoBehaviour {
 	public GameObject spinner;
 	public GameObject guns;
 	public GameObject shields;
+    public GameObject levelMusic;
+    public GameObject robot;
 	private Animator spinnerAnimator;
 	private bool goUpBaby = false;
 	private bool once = false;
@@ -22,6 +24,7 @@ public class ShowMuscles : MonoBehaviour {
 		guns.SetActive (false);
 		shields.SetActive (false);
 		au = GetComponent<AudioSource> ();
+        robot.GetComponent<SimpleLookAt>().enabled = false;
 		//StartCoroutine (Show ());
 	}
 	void OnTriggerEnter (Collider col){
@@ -47,17 +50,21 @@ public class ShowMuscles : MonoBehaviour {
 
 	IEnumerator Show(){
 		au.PlayOneShot (hahaha);
+        robot.GetComponent<Animator>().SetTrigger("On");
 		yield return new WaitForSeconds (4f);
-		goUpBaby = true;
+        robot.GetComponent<SimpleLookAt>().enabled = true;
+        goUpBaby = true;
 		spinner.SetActive (true);
-		yield return new WaitForSeconds (2f);
+        levelMusic.SetActive(true);
+        yield return new WaitForSeconds (2f);
 		goUpBaby = false;
 		spinnerAnimator.SetTrigger ("ShowMuscles");
-		yield return new WaitForSeconds (0.5f);
-		guns.SetActive (true);
+        yield return new WaitForSeconds (0.5f);
+        guns.SetActive (true);
 		yield return new WaitForSeconds (2f);
 		shields.SetActive (true);
-		yield return new WaitForSeconds (2f);
+        
+		yield return new WaitForSeconds (0.5f);
 		boss.enabled = true;
 		GetComponent<Wandering> ().enabled = true;
 		GetComponent<NavMeshAgent> ().enabled = true;

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeWeapon : MonoBehaviour
 {
+	public Image image;
     public int shootType = 1;
     // Use this for initialization
     void Start()
@@ -17,6 +19,7 @@ public class ChangeWeapon : MonoBehaviour
         if (once) return;
         if (other.tag == "Player")
         {
+			image.gameObject.SetActive (true);
             once = true;
             switch (shootType)
             {

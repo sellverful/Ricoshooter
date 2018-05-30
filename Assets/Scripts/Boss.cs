@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour {
 	public Transform player;
@@ -170,7 +171,6 @@ public class Boss : MonoBehaviour {
 		shootDirection = player.position + Random.insideUnitSphere * errorMargin - transform.position;
 		shootDirection = new Vector3 (shootDirection.x,0,shootDirection.z);
 		SineBulletScript newBullet = Instantiate (sineBullet, firePoint[currentFirePoint].position, Quaternion.LookRotation(shootDirection)) as SineBulletScript;
-		newBullet.speed = bulletSpeed;
 	}
 	void StartBulletHell(){
 		currShootType = ShootType.BulletHell;
@@ -266,7 +266,7 @@ public class Boss : MonoBehaviour {
 			else {
 				StartCoroutine(DeactivateSpinner ());
 				dead = true;
-				//Destroy (gameObject);
+                StartCoroutine(EndGame());
 			}
 		}
 		firePoint [currentFirePoint].parent.parent.GetComponent<VulnerablePoint> ().enabled = false;
@@ -276,6 +276,11 @@ public class Boss : MonoBehaviour {
 		}
 
 	}
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Titles");
+    }
 	IEnumerator DeactivateSpinner(){
 		explosion.gameObject.SetActive (true);
 		yield return new WaitForSeconds (1f);

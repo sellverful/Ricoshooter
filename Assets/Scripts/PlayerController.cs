@@ -122,10 +122,11 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
-	//added
-	// Update is called once per frame
+    //added
+    // Update is called once per frame
+    Vector3 rememberPosition;
 	void Update () {
-		if (!deflect) {
+        if (!dead) {
 			MovePlayer ();
 		}
 		GodMode ();
@@ -134,6 +135,10 @@ public class PlayerController : MonoBehaviour {
 
 		Deflect ();
 	}
+    void RemainDead()
+    {
+        
+    }
 		//moving player
 	void MovePlayer(){
 		moveInput = new Vector3 (Input.GetAxisRaw("Horizontal"),0f, Input.GetAxisRaw("Vertical"));
@@ -252,9 +257,11 @@ public class PlayerController : MonoBehaviour {
 		UpdateHearts ();
 		if (curHealth <= 0) {
             dead = true;
+            rememberPosition = transform.position;
             anim.SetTrigger("Dead");
             deflect = true;
             StartCoroutine(Restart());
+            myRig.velocity = Vector3.zero;
 			enabled = false;
 			pause.enabled = false;
 		}

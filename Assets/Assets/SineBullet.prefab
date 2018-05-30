@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1790954141138446}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -117.35403, y: 0.22, z: -36.785336}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -10.499594, y: 0.2, z: 7.8755493}
+  m_LocalScale: {x: 0.76000005, y: 0.75999993, z: 0.75999993}
   m_Children:
   - {fileID: 4006741868009512}
   m_Father: {fileID: 0}
@@ -143,10 +143,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playersBullet: 0
-  speed: 5
+  speed: 20
   damage: 1
-  frequency: 3
-  magnitude: 3
+  frequency: 6
+  magnitude: 6
 --- !u!135 &135106291401271052
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -573,7 +573,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
