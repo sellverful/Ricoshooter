@@ -1,23 +1,8 @@
 fileFormatVersion: 2
-guid: 9ddf8fc9040e92c48bfda9aef65aacf8
-timeCreated: 1450988627
+guid: 89f0137620f6af44b9ba852b4190e64e
+timeCreated: 1488610019
 licenseType: Store
 PluginImporter:
-<<<<<<< HEAD
-  serializedVersion: 1
-  iconMap: {}
-  executionOrder: {}
-  isPreloaded: 0
-  platformData:
-    Android:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Any:
-      enabled: 0
-      settings: {}
-    Editor:
-=======
   externalObjects: {}
   serializedVersion: 2
   iconMap: {}
@@ -38,12 +23,6 @@ PluginImporter:
       settings:
         CPU: AnyCPU
   - first:
-      Android: Android
-    second:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-  - first:
       Any: 
     second:
       enabled: 0
@@ -51,39 +30,11 @@ PluginImporter:
   - first:
       Editor: Editor
     second:
->>>>>>> 231bb7ad66fcca88e51ad624e897c91eef3043d7
       enabled: 1
       settings:
-        CPU: x86
+        CPU: AnyCPU
         DefaultValueInitialized: true
-        OS: Windows
-<<<<<<< HEAD
-    Linux:
-      enabled: 0
-      settings:
-        CPU: x86
-    Linux64:
-      enabled: 0
-      settings:
-        CPU: x86_64
-    OSXIntel:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    OSXIntel64:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Win:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    Win64:
-      enabled: 0
-      settings:
-        CPU: AnyCPU
-    WindowsStoreApps:
-=======
+        OS: AnyOS
   - first:
       Facebook: Win
     second:
@@ -123,14 +74,9 @@ PluginImporter:
   - first:
       Windows Store Apps: WindowsStoreApps
     second:
->>>>>>> 231bb7ad66fcca88e51ad624e897c91eef3043d7
       enabled: 0
       settings:
         CPU: AnyCPU
-        DontProcess: False
-        PlaceholderPath: 
-        SDK: AnySDK
-        ScriptingBackend: AnyScriptingBackend
   userData: 
   assetBundleName: 
   assetBundleVariant: 

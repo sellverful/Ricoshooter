@@ -47,6 +47,7 @@ public class enemy1 : MonoBehaviour {
     void HitCollider()
     {
         weapon.GetComponent<Collider>().enabled = !weapon.GetComponent<Collider>().enabled;
+        Debug.Log("HITCOLLIDER");
     }
 	IEnumerator Hit(){
 		yield return new WaitForSeconds (0.5f);
