@@ -29,6 +29,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Assets/Titles/Titles.unity
     guid: 893a2e9d04a29d14db39a522080b8a3e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Assets/Titles/Main.unity
     guid: 7b88dcdd615d89c47a5a3188abcac504
