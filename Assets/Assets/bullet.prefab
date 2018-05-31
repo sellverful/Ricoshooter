@@ -130,6 +130,9 @@ MonoBehaviour:
   gun: {fileID: 0}
   rig: {fileID: 0}
   rotSpeed: 800
+  maxDistanceFromPlayer: 40
+  howManyTimesReflected: 0
+  maxHowManyTimesReflected: 4
   playersBullet: 1
 --- !u!135 &135652352467663662
 SphereCollider:

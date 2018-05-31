@@ -14,8 +14,11 @@ public class enemy1 : MonoBehaviour {
 	float time;
 	private bool dead = false;
 	private Animator anim;
-	void Start () {
+    public GameObject weapon;
+
+    void Start () {
 		agent = GetComponent<NavMeshAgent> ();
+        weapon.GetComponentInChildren<WeaponHit>();
 		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		anim = GetComponent<Animator> ();
 		audioS = GetComponent<AudioSource> ();
@@ -39,8 +42,12 @@ public class enemy1 : MonoBehaviour {
 	void DealDamage(){
 		anim.SetTrigger ("Hit");
 		audioS.PlayOneShot (hitSound);
-		StartCoroutine (Hit());
+		//StartCoroutine (Hit());
 	}
+    void HitCollider()
+    {
+        weapon.GetComponent<Collider>().enabled = !weapon.GetComponent<Collider>().enabled;
+    }
 	IEnumerator Hit(){
 		yield return new WaitForSeconds (0.5f);
 		player.SendMessage ("DealDamage", 1f);

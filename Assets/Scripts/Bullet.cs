@@ -15,20 +15,24 @@ public class Bullet : MonoBehaviour {
 	private float time = 0f;
 	private float startingSpeed;
 	public float rotSpeed = 800f;
-	// Use this for initialization
-	bool once = true;
+    public float maxDistanceFromPlayer = 40f;
+    public float howManyTimesReflected = 0f;
+    public float maxHowManyTimesReflected = 4f;
+    // Use this for initialization
+    bool once = true;
 	[HideInInspector]public bool playersBullet = true;
 	void Start () {
 		rig = GetComponent<Rigidbody> ();
 		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 		startingSpeed = speed;
-		Destroy (gameObject, 5);
+		Destroy (gameObject, 3);
 	}
 		
 	// Update is called once per frame
 	void FixedUpdate () {
-		//Destroy (this.gameObject, 7);
-		transform.Translate (Vector3.forward * speed * Time.deltaTime);
+
+        //Destroy (this.gameObject, 7);
+        transform.Translate (Vector3.forward * speed * Time.deltaTime);
 		Destroy (this.gameObject, 5);
 		Ray ray = new Ray (transform.position, transform.forward);
 		RaycastHit hit;
@@ -47,29 +51,26 @@ public class Bullet : MonoBehaviour {
 				Vector3 reflect = Vector3.Reflect (ray.direction, hit.normal);
 				float rot = 90 - Mathf.Atan2 (reflect.z, reflect.x) * Mathf.Rad2Deg;
 				int rotInt = Mathf.RoundToInt (rot);
-
-				transform.position = hit.point;
+                howManyTimesReflected++;
+                transform.position = hit.point;
 				if (reflect.y != 0)
 					reflect.y = 0;
 				transform.rotation = Quaternion.LookRotation(reflect);
 			}
 		}
+        DestroyBullet();
+    }
+    void DestroyBullet()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) > maxDistanceFromPlayer)
+        {
+            Destroy(gameObject);
+        } else if (howManyTimesReflected > maxHowManyTimesReflected)
+        {
+            Destroy(gameObject);
+        }
 
-		//slowing bullet
-		/*time -= Time.deltaTime;
-		if (time < 0 && speed > 0) {
-			time = timeOfFalling;
-			speed *= speedOfFalling;
-		}
-
-		//stop bullet completelly
-		if (speed < 1f) {
-			speed = 0;
-			rig.isKinematic = false;
-			GetComponent<BoxCollider> ().enabled = true;
-		}*/ // Old stopping bullet
-	}
-
+    }
 	void OnTriggerEnter(Collider col){
         if (!enabled) return;
 		if (col.tag == "Player" && player.deflect == false) {
