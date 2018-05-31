@@ -25,6 +25,7 @@ public class ActivateEnemiesWithTrain : MonoBehaviour {
                 transform.GetChild(i).gameObject.SetActive(true);
             }
         }
+        
     }
     // Update is called once per frame
     void Update () {
@@ -34,5 +35,6 @@ public class ActivateEnemiesWithTrain : MonoBehaviour {
                 doors.doorsActive = true;
             Destroy(gameObject, 2);
         }
+        
     }
 }

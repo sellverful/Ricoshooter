@@ -5,29 +5,34 @@ using UnityEngine;
 public class TrainMove : MonoBehaviour {
     private float speed;
     private bool isAllowedToTrigger;
+    public ActivateEnemiesWithTrain aewt;
 	// Use this for initialization
 	void Start () {
-        speed = 100f;
+        speed = 40f;
         isAllowedToTrigger = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
-         
-	}
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Collider");
-        if(other.gameObject.tag == "Stopper" && isAllowedToTrigger)
+        if(aewt.enemiesAmount == 0)
         {
-            Debug.Log("Stopper");
+            isAllowedToTrigger = false;
+        }
+	}
+    private void OnTriggerStay(Collider other)
+    {
+        //Debug.Log("Collider");
+        if(other.gameObject.tag == "Stopper" && isAllowedToTrigger == true)
+        {
+            //Debug.Log("Stopper");
             slowDown();
         }
-        /*else
+        else if(other.gameObject.tag == "Stopper" && isAllowedToTrigger == false)
         {
-            speed = 100f;
-        }*/
+            Debug.Log("Ехай Нахуй");
+            speed = 40f;
+        }
     }
    void slowDown()
    {
