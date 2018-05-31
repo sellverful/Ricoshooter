@@ -47,7 +47,7 @@ public class enemy1 : MonoBehaviour {
     void HitCollider()
     {
         weapon.GetComponent<Collider>().enabled = !weapon.GetComponent<Collider>().enabled;
-        Debug.Log("HITCOLLIDER");
+        //Debug.Log("HITCOLLIDER");
     }
 	IEnumerator Hit(){
 		yield return new WaitForSeconds (0.5f);
@@ -59,6 +59,7 @@ public class enemy1 : MonoBehaviour {
 	}
 	void Die(){
 		dead = true;
+        player.GetComponent<PlayerController>().score += 100;
 		agent.Stop ();
 		anim.SetTrigger ("Die");
 		GetComponent<BoxCollider> ().enabled = false;
