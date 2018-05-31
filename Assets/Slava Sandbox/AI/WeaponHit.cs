@@ -17,7 +17,7 @@ public class WeaponHit : MonoBehaviour {
     {
         if (other.tag == "Player" && player.undead == false)
         {
-            transform.root.SendMessage("DamageFromWeapon");
+            player.SendMessage("DealDamage" ,1f);
         } else if (other.tag == "Player")
         {
             Debug.Log("HIT");
