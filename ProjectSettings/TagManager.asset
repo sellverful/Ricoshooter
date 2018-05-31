@@ -21,6 +21,8 @@ TagManager:
   - CheckpointManager
   - Fire
   - pause
+  - Train
+  - Stopper
   layers:
   - Default
   - TransparentFX
