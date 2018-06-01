@@ -18,8 +18,9 @@ public class PlayerController : MonoBehaviour {
     private bool dashCooldown;
 
     private Camera mainCamera;
-	//added
-	public Image[] healthImages;
+    private GameObject particleS;
+    //added
+    public Image[] healthImages;
 	public Sprite[] healthSprites;
     public int score = 0;
 	//added
@@ -57,8 +58,10 @@ public class PlayerController : MonoBehaviour {
 		myRig = GetComponent<Rigidbody> ();
 		mainCamera = FindObjectOfType<Camera> ();
 		anim = GetComponentInChildren<Animator> ();
-		//added
-		curHealth = startHearts * healthPerHeart;
+        particleS = GetComponentInChildren<ParticleSystem>().gameObject;
+        particleS.SetActive(false);
+        //added
+        curHealth = startHearts * healthPerHeart;
 		maxHealth = maxHeartAmount * healthPerHeart;
 		checkHealthAmount ();
         moveSpeedTMP = moveSpeed;
@@ -325,11 +328,13 @@ public class PlayerController : MonoBehaviour {
     {
         moveSpeed = 75;
         dashActive = true;
+        particleS.SetActive(true);
         //transform.GetComponent<CapsuleCollider>().enabled = false;
         invincible = true;
         yield return new WaitForSeconds(.1f);
         moveSpeed = moveSpeedTMP;
         dashActive = false;
+        particleS.SetActive(false);
         //transform.GetComponent<CapsuleCollider>().enabled = true;
         invincible = false;
 
