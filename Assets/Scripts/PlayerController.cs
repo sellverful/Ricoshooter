@@ -137,8 +137,6 @@ public class PlayerController : MonoBehaviour {
 		}
 		GodMode ();
 		RotatePlayer ();
-		ShootWithGun ();
-
 		Deflect ();
 	}
     void RemainDead()
@@ -174,15 +172,6 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void ShootWithGun(){
-		if (!PauseMenu.GameIsPaused || dead) {
-			if (Input.GetButtonDown ("Fire1")) {
-				gun.isFiring = true;
-			} else if (Input.GetButtonUp ("Fire1")) {
-				gun.isFiring = false;
-			}
-		}
-	}
 
 	//Move in Right Direction
 	void RightMovement(){

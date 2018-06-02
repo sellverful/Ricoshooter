@@ -22,8 +22,7 @@ public class Getsuga : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            Debug.LogError("Implement hit in Getsuga, you lazy scam");
-            Destroy(gameObject);
+            other.gameObject.GetComponent<PlayerController>().SendMessage("DealDamage",1);
         }
     }
 }

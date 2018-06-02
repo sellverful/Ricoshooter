@@ -44,7 +44,7 @@ public class Gun : MonoBehaviour
         switch (currShootType)
         {
             case ShootType.Gun:
-                ShootWithGun();
+                GunFire();
                 break;
             case ShootType.SineShotgun:
                 SineShotgunShoot();
@@ -78,24 +78,20 @@ public class Gun : MonoBehaviour
     }
     void ShootWithGun()
     {
-        if (isFiring)
+        GetComponent<AudioSource>().PlayOneShot(shurikenSound);
+        Bullet newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bullet;
+        newBullet.speed = bulletSpeed;
+        shotCounter = timeBetweenShots;
+    }
+    void GunFire()
+    {
+        if (!PauseMenu.GameIsPaused || !GetComponentInParent<PlayerController>().dead)
         {
-            shotCounter -= Time.deltaTime;
-            if (shotCounter <= 0)
+            if (Input.GetButtonUp("Fire1"))
             {
-                GetComponent<AudioSource>().PlayOneShot(shurikenSound);
-                Bullet newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Bullet;
-                newBullet.speed = bulletSpeed;
-                shotCounter = timeBetweenShots;
+                ShootWithGun();
             }
-
-
         }
-        else
-        {
-            shotCounter = 0;
-        }
-
     }
     void ChangeShootType(ShootType shoot)
     {

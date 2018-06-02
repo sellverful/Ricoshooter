@@ -15,6 +15,14 @@ public class ScoreSystem : MonoBehaviour
     private String rank = "";
     private int scoreLife = 1000;
 
+    private void Start()
+    {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        }
+    }
+
     void FixedUpdate()
     {
         timeScore += Time.deltaTime;

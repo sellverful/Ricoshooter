@@ -2923,7 +2923,7 @@ Transform:
   m_GameObject: {fileID: 1635798818522356}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.079999976, y: 0.079999976, z: 0.079999976}
   m_Children: []
   m_Father: {fileID: 4240818936133372}
   m_RootOrder: 0
@@ -4472,7 +4472,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1687751226164512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.514, y: 35.023, z: 25.83}
+  m_LocalPosition: {x: -9.06, y: 33, z: 29.9}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_Children:
   - {fileID: 4892232091467318}
@@ -5478,7 +5478,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ef025af6652c91145b3ae366db70e735, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5576,7 +5576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef42f44e95018e478a51aafdd96e091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currShootType: 4
+  currShootType: 0
   isFiring: 0
   ammoLazer: 2
   sineBullet: {fileID: 114033538984946442, guid: af087ac1bc018404b890c6012f0a5dd1,
@@ -5603,6 +5603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
+  invincible: 0
   RestartUI: {fileID: 0}
   unityChan: {fileID: 1204077181352016}
   healthImages:
@@ -5613,6 +5614,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f5e97e7a6da00804abc3e48ccdfd085f, type: 3}
   - {fileID: 21300002, guid: f5e97e7a6da00804abc3e48ccdfd085f, type: 3}
   - {fileID: 21300004, guid: f5e97e7a6da00804abc3e48ccdfd085f, type: 3}
+  score: 0
   gun: {fileID: 114064362123646798}
   deflect: 0
   deflectCooldown: 2
