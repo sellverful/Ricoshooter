@@ -5,11 +5,12 @@ using UnityEngine;
 public class SimpleProjectile : MonoBehaviour {
     public float speed = 2f;
     private Rigidbody rig;
-    public float damage= 10f;
+    public int damage= 1;
+    public float destroyInSec = 10f;
 	// Use this for initialization
 	void Start () {
         rig = GetComponent<Rigidbody>();
-        Destroy(gameObject,10);
+        Destroy(gameObject, destroyInSec);
     }
 	
 	// Update is called once per frame
@@ -20,7 +21,7 @@ public class SimpleProjectile : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            other.SendMessage("RecieveDamageFromEnemy",damage);
+            other.SendMessage("DealDamage",damage);
             Destroy(gameObject);
         }
     }

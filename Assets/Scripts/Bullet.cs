@@ -42,11 +42,26 @@ public class Bullet : MonoBehaviour {
 					speed = startingSpeed;
 				} 
 				if (hit.collider.gameObject.tag == "Enemy" && playersBullet/*&& ricocheted*/) {
-					if(hit.collider.GetComponent<enemy1>()!=null)
-						hit.collider.GetComponent<enemy1>().SendMessage ("Die");
-					if(hit.collider.GetComponent<enemy2>()!=null)
-						hit.collider.GetComponent<enemy2>().SendMessage ("Die");
-					Destroy (this.gameObject);
+
+                    if (hit.collider.GetComponent<enemy1>() != null)
+                    {
+                        hit.collider.GetComponent<enemy1>().SendMessage("Damage");
+                        Destroy(this.gameObject);
+                    }
+                    if (hit.collider.GetComponent<enemy2>() != null)
+                    {
+                        hit.collider.GetComponent<enemy2>().SendMessage("Damage");
+                        Destroy(this.gameObject);
+                    }
+                    if (hit.collider.GetComponent<RunningRiot.Boss>() != null)
+                    {
+                        Debug.Log(hit.collider.GetComponent<RunningRiot.Boss>().undead);
+                        if (!hit.collider.GetComponent<RunningRiot.Boss>().undead)
+                        {
+                            hit.collider.GetComponent<RunningRiot.Boss>().SendMessage("Die");
+                            Destroy(this.gameObject);
+                        }
+                    }
 				}
 				Vector3 reflect = Vector3.Reflect (ray.direction, hit.normal);
 				float rot = 90 - Mathf.Atan2 (reflect.z, reflect.x) * Mathf.Rad2Deg;
@@ -73,7 +88,7 @@ public class Bullet : MonoBehaviour {
     }
 	void OnTriggerEnter(Collider col){
         if (!enabled) return;
-		if (col.tag == "Player" && player.deflect == false) {
+		if (col.tag == "Player" && player.deflect == false && player.invincible == false && player.undead == false) {
 			player.SendMessage ("DealDamage", 1);
 			Destroy (this.gameObject);
 		} else if (col.tag == "Defence" && playersBullet) {
@@ -86,7 +101,23 @@ public class Bullet : MonoBehaviour {
 				col.GetComponent<enemy1>().SendMessage ("Die");
 			if(col.GetComponent<enemy2>()!=null)
 				col.GetComponent<enemy2>().SendMessage ("Die");
-			Destroy (this.gameObject);
-		}
+            if (col.GetComponent<RunningRiot.Boss>() != null)
+            {
+                Debug.Log(col.GetComponent<RunningRiot.Boss>().undead);
+                if (!col.GetComponent<RunningRiot.Boss>().undead)
+                {
+                    col.GetComponent<RunningRiot.Boss>().SendMessage("Die");
+                }
+                else if (col.GetComponent<RunningRiot.Boss>().undead)
+                {
+                    return;
+                }
+            }
+            
+            Destroy (this.gameObject);
+		} else if (col.tag =="Boss2")
+        {
+            
+        }
 	}
 }

@@ -15,7 +15,7 @@ namespace RunningRiot
         [HideInInspector]
         public enum HitStates { Dash, Getsuga };
         [HideInInspector]
-        public enum Phase { First, Second, Third };
+        public enum Phase { First, Second, Third, Zero };
 
         public State currState = State.Stand;
         public Phase currPhase = Phase.First;
@@ -25,7 +25,7 @@ namespace RunningRiot
         private Animator anim;
         public bool facingRight;
         public float damage = 50f;
-        private WeaponHit weapon;
+        public WeaponHit weapon;
         [SerializeField]
         private bool lockHit = false;
         public float aggroDistance = 20f;
@@ -41,38 +41,54 @@ namespace RunningRiot
         public GameObject getsugaGameobject;
         public float basicMovementSpeed = 3.5f;
         public float fastMovementSpeed = 15f;
+        public bool undead = true;
+        private bool onceStart;
+        [SerializeField]
+        private bool startFight;
+        [SerializeField]
+        private GameObject[] swords;
 
         int hp = 5;
 
         // Use this for initialization
         void Start()
         {
+            foreach (GameObject sword in swords)
+            {
+                sword.SetActive(false);
+            }
+            undead = true;
             currentHealth = health;
             particleSystem.SetActive(false);
             //this.tag = "Enemy";
+            agent = GetComponent<NavMeshAgent>();
             weapon = GetComponentInChildren<WeaponHit>();
             anim = GetComponent<Animator>();
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            agent = GetComponent<NavMeshAgent>();
-            if (transform.rotation.y < 0)
-            {
-                facingRight = false;
-            }
-            else
-            {
-                facingRight = true;
-            }
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!gotHit)
-                IsGrounded();
-            AnimationStates();
-            SwitchPhases();
-            Phases();
-            Damaging();
+            if(!startFight)
+                StartIfPlayerNear();
+            if (startFight)
+            {
+                if (!gotHit)
+                    IsGrounded();
+                AnimationStates();
+                SwitchPhases();
+                Phases();
+                Damaging();
+            }
+        }
+        void StartIfPlayerNear()
+        {
+            if (!onceStart && Vector3.Distance(transform.position,player.position)<15)
+            {
+                onceStart = true;
+                StartCoroutine(start());
+            }
         }
         void Damaging()
         {
@@ -92,11 +108,18 @@ namespace RunningRiot
                 currPhase = Phase.Second;
             }
         }
+        void HitCollider()
+        {
+            weapon.GetComponent<Collider>().enabled = !weapon.GetComponent<Collider>().enabled;
+        }
         bool burnTheGroundOnce = false;
         void Phases()
         {
             switch (currPhase)
             {
+                case Phase.Zero:
+
+                    break;
                 case Phase.First:
                     States();
                     break;
@@ -104,16 +127,34 @@ namespace RunningRiot
                     agent.enabled = false;
                     if (!burnTheGroundOnce)
                     {
-                        transform.position = new Vector3(transform.position.x, transform.position.y + 20, transform.position.z);
+                        transform.position = new Vector3(transform.position.x, transform.position.y + 40, transform.position.z);
                         BurnTheGround();
                         burnTheGroundOnce = true;
                     }
                     break;
                 case Phase.Third:
-                    agent.enabled = true;
+                    if (burnTheGroundOnce)
+                    {
+                        multiplier = 2;
+                        transform.position = new Vector3(transform.position.x, transform.position.y - 40, transform.position.z);
+                        agent.enabled = true;
+                        burnTheGroundOnce = false;
+                    }
+                    
                     States();
                     break;
             }
+        }
+        IEnumerator start()
+        {
+            SetTrigger("Start");
+            yield return new WaitForSeconds(3f);
+            foreach(GameObject sword in swords)
+            {
+                sword.SetActive(true);
+            }
+            startFight = true;
+            undead = false;
         }
         void BurnTheGround()
         {
@@ -136,6 +177,7 @@ namespace RunningRiot
         }
         State currentStateIf;
         private bool gotHit;
+        private bool rotate;
 
         void AnimationStates()
         {
@@ -209,15 +251,15 @@ namespace RunningRiot
         IEnumerator HitPlayer()
         {
             onceDashLongWait = false;
-            for (int i = 0; i < howManyDashes; i++)
+            for (int i = 0; i < howManyDashes*multiplier; i++)
             {
                 StartCoroutine(Dash());
                 yield return Dash();
             }
             agent.speed = basicMovementSpeed;
             currState = State.Chase;
-            yield return new WaitForSeconds(5f / multiplier);
-            //currHitState = HitStates.Getsuga;
+            yield return new WaitForSeconds(5f);
+            currHitState = HitStates.Getsuga;
             lockHit = false;
         }
         IEnumerator Dash()
@@ -238,15 +280,22 @@ namespace RunningRiot
 
             agent.isStopped = false;
             SetTrigger("Attack");
-            agent.speed = fastMovementSpeed * multiplier;
+            if (multiplier > 1)
+            {
+                agent.speed = fastMovementSpeed * multiplier*10;
+            } else
+            {
+                agent.speed = fastMovementSpeed * multiplier;
+            }
+            
             agent.SetDestination(player.position);
 
             yield return new WaitForSeconds(1f);
         }
         IEnumerator Getsuga()
         {
-
-            for (int i = 0; i < howManyDashes; i++)
+            undead = true;
+            for (int i = 0; i < howManyDashes*multiplier; i++)
             {
                 SetTrigger("Idle");
                 agent.speed = 0f;
@@ -256,14 +305,18 @@ namespace RunningRiot
                 SetTrigger("Attack");
                 StartCoroutine(ThrowGetsuga());
                 yield return ThrowGetsuga();
+                Debug.Log("AfterGetsuga");
             }
             yield return new WaitForSeconds(1f);
+            Debug.Log("AfterGetsuga loop");
             agent.isStopped = false;
             agent.speed = basicMovementSpeed;
             currState = State.Chase;
-            yield return new WaitForSeconds(5f / multiplier);
+            undead = false;
+            yield return new WaitForSeconds(5f);
             currHitState = HitStates.Dash;
             lockHit = false;
+            
         }
         IEnumerator ThrowGetsuga()
         {
@@ -277,10 +330,26 @@ namespace RunningRiot
             }
             else
             {
-                Instantiate(getsugaGameobject, transform, true);
-
+                GameObject getsuga = Instantiate(getsugaGameobject, transform, true);
+                getsuga.transform.parent = null;
+                getsuga.transform.position = transform.position;
+                getsuga.transform.rotation = transform.rotation;
+                getsuga.GetComponent<Getsuga>().speed *= multiplier;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f/multiplier);
+        }
+        void Die()
+        {
+            if (undead) return;
+            currentHealth -= 50f;
+            if(currentHealth <= 0)
+            {
+                StopAllCoroutines();
+                SetTrigger("Death");
+                agent.isStopped = true;
+                GetComponent<SpawnRainFire>().enabled = false;
+                enabled = false;
+            }
         }
         void TurnOnHitbox()
         {

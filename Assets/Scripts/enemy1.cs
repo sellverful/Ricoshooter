@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class enemy1 : MonoBehaviour {
 	public Transform player;
 	NavMeshAgent agent;
+    public int currHealth = 2;
 	// Use this for initialization
 	public float hitRate = 1f;
 	public AudioClip hitSound;
@@ -47,7 +48,7 @@ public class enemy1 : MonoBehaviour {
     void HitCollider()
     {
         weapon.GetComponent<Collider>().enabled = !weapon.GetComponent<Collider>().enabled;
-        Debug.Log("HITCOLLIDER");
+        //Debug.Log("HITCOLLIDER");
     }
 	IEnumerator Hit(){
 		yield return new WaitForSeconds (0.5f);
@@ -57,8 +58,18 @@ public class enemy1 : MonoBehaviour {
 		if(gameObject.GetComponentInParent<ActivateEnemies> ()!=null)
 			gameObject.GetComponentInParent<ActivateEnemies> ().count++;
 	}
-	void Die(){
+
+    void Damage()
+    {
+        currHealth -= 1;
+        if(currHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die(){
 		dead = true;
+        player.GetComponent<PlayerController>().score += 100;
 		agent.Stop ();
 		anim.SetTrigger ("Die");
 		GetComponent<BoxCollider> ().enabled = false;

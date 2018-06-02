@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33689690004466068}
   - component: {fileID: 135432699359657962}
   - component: {fileID: 23295316385381140}
+  - component: {fileID: 114692999253681544}
   - component: {fileID: 54950980256365230}
-  - component: {fileID: 114068358756911930}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -131,7 +131,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114068358756911930
+--- !u!114 &114692999253681544
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -139,11 +139,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1364678754978320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aecd1304302fbe4195a959fcb9d3b2d, type: 3}
+  m_Script: {fileID: 11500000, guid: ac19f658811d1fe4abc97ee76388c8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 10
+  speed: 2
+  damage: 1
+  destroyInSec: 10
 --- !u!135 &135432699359657962
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -7,16 +7,22 @@ public class PlayerController : MonoBehaviour {
 
 
 	public float moveSpeed;
-	private Rigidbody myRig;
+    private float moveSpeedTMP;
+    private bool dashActive;
+    public bool invincible;
+    private Rigidbody myRig;
 	public GameObject RestartUI;
 	public GameObject unityChan;
 	private Vector3 moveInput;
 	private Vector3 moveVelocity;
+    private bool dashCooldown;
 
-	private Camera mainCamera;
-	//added
-	public Image[] healthImages;
+    private Camera mainCamera;
+    private GameObject particleS;
+    //added
+    public Image[] healthImages;
 	public Sprite[] healthSprites;
+    public int score = 0;
 	//added
 
 	public Gun gun;
@@ -52,10 +58,13 @@ public class PlayerController : MonoBehaviour {
 		myRig = GetComponent<Rigidbody> ();
 		mainCamera = FindObjectOfType<Camera> ();
 		anim = GetComponentInChildren<Animator> ();
-		//added
-		curHealth = startHearts * healthPerHeart;
+        particleS = GetComponentInChildren<ParticleSystem>().gameObject;
+        particleS.SetActive(false);
+        //added
+        curHealth = startHearts * healthPerHeart;
 		maxHealth = maxHeartAmount * healthPerHeart;
 		checkHealthAmount ();
+        moveSpeedTMP = moveSpeed;
         //added
         pause = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenu>();
 		distToGround = GetComponent<Collider> ().bounds.extents.y;
@@ -131,8 +140,6 @@ public class PlayerController : MonoBehaviour {
 		}
 		GodMode ();
 		RotatePlayer ();
-		ShootWithGun ();
-
 		Deflect ();
 	}
     void RemainDead()
@@ -142,7 +149,11 @@ public class PlayerController : MonoBehaviour {
 		//moving player
 	void MovePlayer(){
 		moveInput = new Vector3 (Input.GetAxisRaw("Horizontal"),0f, Input.GetAxisRaw("Vertical"));
-		moveVelocity = moveInput * moveSpeed;
+        if (Input.GetButtonDown("Fire2"))
+        {
+            OnDashInput();
+        }
+        moveVelocity = moveInput * moveSpeed;
 		RightMovement ();
 	}
 	void GodMode(){
@@ -164,15 +175,6 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void ShootWithGun(){
-		if (!PauseMenu.GameIsPaused || dead) {
-			if (Input.GetButtonDown ("Fire1")) {
-				gun.isFiring = true;
-			} else if (Input.GetButtonUp ("Fire1")) {
-				gun.isFiring = false;
-			}
-		}
-	}
 
 	//Move in Right Direction
 	void RightMovement(){
@@ -229,19 +231,19 @@ public class PlayerController : MonoBehaviour {
 
 	//deflect 
 	void Deflect(){
-		deflectCooldownTime -= Time.deltaTime;
-		if (Input.GetButtonDown ("Deflect")) {
-			if (deflectCooldownTime <= 0) {
-				deflectCooldownTime = deflectCooldown;
-				deflect = true;
-				moveVelocity = Vector3.zero;
-				Invoke ("DeflectFalse", deflectCooldown);
-			}
-		} else if (Input.GetButtonUp ("Deflect")) {
-			deflectCooldownTime = 0;
-			deflect = false;
-			CancelInvoke ();
-		}
+		//deflectCooldownTime -= Time.deltaTime;
+		//if (Input.GetButtonDown ("Deflect")) {
+		//	if (deflectCooldownTime <= 0) {
+		//		deflectCooldownTime = deflectCooldown;
+		//		deflect = true;
+		//		moveVelocity = Vector3.zero;
+		//		Invoke ("DeflectFalse", deflectCooldown);
+		//	}
+		//} else if (Input.GetButtonUp ("Deflect")) {
+		//	deflectCooldownTime = 0;
+		//	deflect = false;
+		//	CancelInvoke ();
+		//}
 
 	}
 	void DeflectFalse(){
@@ -252,7 +254,7 @@ public class PlayerController : MonoBehaviour {
 		if (undead)
 			return;
 		curHealth -= damage;
-		//StartCoroutine (Undead ());
+		StartCoroutine (Undead ());
 		curHealth = Mathf.Clamp (curHealth, 0, startHearts * healthPerHeart);
 		UpdateHearts ();
 		if (curHealth <= 0) {
@@ -294,7 +296,39 @@ public class PlayerController : MonoBehaviour {
 			yield return new WaitForSeconds (0.1f);
 		}
 	}
-	void FixedUpdate(){
+
+    public void OnDashInput()
+    {
+        if (!dashCooldown)
+        {
+            StartCoroutine(DashCooldown());
+            StartCoroutine(Dash());
+        }
+
+    }
+
+    IEnumerator DashCooldown()
+    {
+        dashCooldown = true;
+        yield return new WaitForSeconds(.6f);
+        dashCooldown = false;
+    }
+    IEnumerator Dash()
+    {
+        moveSpeed = 75;
+        dashActive = true;
+        particleS.SetActive(true);
+        //transform.GetComponent<CapsuleCollider>().enabled = false;
+        invincible = true;
+        yield return new WaitForSeconds(.1f);
+        moveSpeed = moveSpeedTMP;
+        dashActive = false;
+        particleS.SetActive(false);
+        //transform.GetComponent<CapsuleCollider>().enabled = true;
+        invincible = false;
+
+    }
+    void FixedUpdate(){
 		myRig.velocity = moveVelocity; 
 	}
 }

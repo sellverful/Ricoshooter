@@ -26,11 +26,13 @@ public class SpawnRainFire : MonoBehaviour {
     }
     IEnumerator SpawnFireBalls()
     {
-        Vector3 pos = center + new Vector3(Random.Range(-size.x/2,size.x/2),center.y+ heightOfInstantiating, 0);
-        Instantiate(fireball,pos,Quaternion.identity);
-        fireball.GetComponent<SimpleProjectile>().speed = boss.multiplier*2;
-        yield return new WaitForSeconds(timeOfInstantiating/boss.multiplier);
-        StartCoroutine(SpawnFireBalls());
+        Vector3 pos = center + new Vector3(Random.Range(-size.x/2,size.x/2),0, Random.Range(-size.z / 2, size.z / 2));
+        GameObject fireballCopy = Instantiate(fireball,pos,Quaternion.identity);
+        fireballCopy.GetComponentInChildren<SimpleProjectile>().speed = 15;
+        Destroy(fireballCopy,3);
+        yield return new WaitForSeconds(timeOfInstantiating);
+        if(enabled)
+            StartCoroutine(SpawnFireBalls());
     }
     IEnumerator SwitchToPhaseThree()
     {
