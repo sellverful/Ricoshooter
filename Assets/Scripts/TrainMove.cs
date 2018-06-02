@@ -5,36 +5,32 @@ using UnityEngine;
 public class TrainMove : MonoBehaviour {
     private float speed;
     private bool isAllowedToTrigger;
-    public ActivateEnemiesWithTrain aewt;
+
 	// Use this for initialization
 	void Start () {
         speed = 40f;
         isAllowedToTrigger = true;
+
+        //Invoke("GetTheHellOuttaHere", 7.0f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
         transform.Translate(Vector3.left * Time.deltaTime * speed);
-        if(aewt.enemiesAmount == 0)
-        {
-            isAllowedToTrigger = false;
-        }
+
 	}
     private void OnTriggerStay(Collider other)
     {
         //Debug.Log("Collider");
-        if(other.gameObject.tag == "Stopper" && isAllowedToTrigger == true)
+        if(other.gameObject.tag == "Stopper")
         {
             //Debug.Log("Stopper");
             slowDown();
         }
-        else if(other.gameObject.tag == "Stopper" && isAllowedToTrigger == false)
-        {
-            Debug.Log("Ехай Нахуй");
-            speed = 40f;
-        }
+        
     }
-   void slowDown()
+
+    void slowDown()
    {
         while(speed > 1.0f)
         {
@@ -45,4 +41,8 @@ public class TrainMove : MonoBehaviour {
             }
         }    
    }
+   /* void GetTheHellOuttaHere()
+    {
+        isAllowedToTrigger = false;
+    }*/
 }

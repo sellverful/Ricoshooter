@@ -23,9 +23,14 @@ public class ActivateEnemiesWithTrain : MonoBehaviour {
             for (int i = 0; i < enemiesAmount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(true);
+               
             }
         }
         
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
     }
     // Update is called once per frame
     void Update () {
