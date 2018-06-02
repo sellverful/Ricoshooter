@@ -43,9 +43,9 @@ public class Bullet : MonoBehaviour {
 				} 
 				if (hit.collider.gameObject.tag == "Enemy" && playersBullet/*&& ricocheted*/) {
 					if(hit.collider.GetComponent<enemy1>()!=null)
-						hit.collider.GetComponent<enemy1>().SendMessage ("Die");
+						hit.collider.GetComponent<enemy1>().SendMessage ("Damage");
 					if(hit.collider.GetComponent<enemy2>()!=null)
-						hit.collider.GetComponent<enemy2>().SendMessage ("Die");
+						hit.collider.GetComponent<enemy2>().SendMessage ("Damage");
 					Destroy (this.gameObject);
 				}
 				Vector3 reflect = Vector3.Reflect (ray.direction, hit.normal);
