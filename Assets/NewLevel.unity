@@ -5966,6 +5966,10 @@ Prefab:
       propertyPath: m_Name
       value: Train3
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cff7c24885e18354398f5fecfd1232cd, type: 3}
+      propertyPath: m_TagString
+      value: Train
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cff7c24885e18354398f5fecfd1232cd, type: 3}
   m_IsPrefabParent: 0
@@ -14701,6 +14705,10 @@ Prefab:
       propertyPath: m_Name
       value: Train2
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cff7c24885e18354398f5fecfd1232cd, type: 3}
+      propertyPath: m_TagString
+      value: Train
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cff7c24885e18354398f5fecfd1232cd, type: 3}
   m_IsPrefabParent: 0
@@ -14796,8 +14804,8 @@ Transform:
   - {fileID: 495500743}
   - {fileID: 799559131}
   - {fileID: 1148644484}
-  - {fileID: 1660986683}
   - {fileID: 2068311796}
+  - {fileID: 1660986683}
   m_Father: {fileID: 0}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25945,7 +25953,7 @@ Prefab:
     - target: {fileID: 114962187375595482, guid: 62c79a89cdb0ccc4bb3c1f1308017c33,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62c79a89cdb0ccc4bb3c1f1308017c33, type: 2}
@@ -34357,6 +34365,10 @@ Prefab:
     - target: {fileID: 100000, guid: cff7c24885e18354398f5fecfd1232cd, type: 3}
       propertyPath: m_Name
       value: Train1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: cff7c24885e18354398f5fecfd1232cd, type: 3}
+      propertyPath: m_TagString
+      value: Train
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cff7c24885e18354398f5fecfd1232cd, type: 3}
