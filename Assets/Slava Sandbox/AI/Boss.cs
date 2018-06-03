@@ -47,6 +47,8 @@ namespace RunningRiot
         private bool startFight;
         [SerializeField]
         private GameObject[] swords;
+        [SerializeField]
+        private GameObject meleeAoeGameobject;
 
         int hp = 5;
 
@@ -80,7 +82,35 @@ namespace RunningRiot
                 SwitchPhases();
                 Phases();
                 Damaging();
+                if(currState != State.Hit)
+                    IfPlayerNear();
             }
+        }
+        bool oncePlayerNear = false;
+        void IfPlayerNear()
+        {
+            if (Input.GetKeyUp(KeyCode.K))
+            {
+                StartCoroutine(MeleeAOE());
+            }
+           if( Vector3.Distance(transform.position, player.position) < 7 && !oncePlayerNear)
+            {
+                oncePlayerNear = true;
+                StartCoroutine(MeleeAOE());
+            }
+        }
+        IEnumerator MeleeAOE()
+        {
+            meleeAoeGameobject.SetActive(true);
+            yield return new WaitForSeconds(1.5f);
+            meleeAoeGameobject.GetComponent<Collider>().enabled = true;
+            meleeAoeGameobject.GetComponentInChildren<Animation>().Play();
+            yield return new WaitForSeconds(0.5f);
+            meleeAoeGameobject.GetComponentInChildren<Animation>().Play("SwordDown");
+            yield return new WaitForSeconds(0.0000000000001f);
+            meleeAoeGameobject.GetComponent<Collider>().enabled = false;
+            meleeAoeGameobject.SetActive(false);
+            oncePlayerNear = false;
         }
         void StartIfPlayerNear()
         {
@@ -179,6 +209,7 @@ namespace RunningRiot
         private bool gotHit;
         private bool rotate;
 
+
         void AnimationStates()
         {
             if (currState != currentStateIf)
@@ -258,9 +289,35 @@ namespace RunningRiot
             }
             agent.speed = basicMovementSpeed;
             currState = State.Chase;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(15f);
             currHitState = HitStates.Getsuga;
             lockHit = false;
+        }
+        IEnumerator Getsuga()
+        {
+            undead = true;
+            for (int i = 0; i < howManyDashes * multiplier; i++)
+            {
+                SetTrigger("Idle");
+                agent.speed = 0f;
+                agent.isStopped = true;
+                yield return new WaitForSeconds(1f);
+                agent.SetDestination(player.position);
+                SetTrigger("Attack");
+                StartCoroutine(ThrowGetsuga());
+                yield return ThrowGetsuga();
+                Debug.Log("AfterGetsuga");
+            }
+            yield return new WaitForSeconds(1f);
+            Debug.Log("AfterGetsuga loop");
+            agent.isStopped = false;
+            agent.speed = basicMovementSpeed;
+            currState = State.Chase;
+            undead = false;
+            yield return new WaitForSeconds(15f);
+            currHitState = HitStates.Dash;
+            lockHit = false;
+
         }
         IEnumerator Dash()
         {
@@ -292,32 +349,7 @@ namespace RunningRiot
 
             yield return new WaitForSeconds(1f);
         }
-        IEnumerator Getsuga()
-        {
-            undead = true;
-            for (int i = 0; i < howManyDashes*multiplier; i++)
-            {
-                SetTrigger("Idle");
-                agent.speed = 0f;
-                agent.isStopped = true;
-                yield return new WaitForSeconds(1f);
-                agent.SetDestination(player.position);
-                SetTrigger("Attack");
-                StartCoroutine(ThrowGetsuga());
-                yield return ThrowGetsuga();
-                Debug.Log("AfterGetsuga");
-            }
-            yield return new WaitForSeconds(1f);
-            Debug.Log("AfterGetsuga loop");
-            agent.isStopped = false;
-            agent.speed = basicMovementSpeed;
-            currState = State.Chase;
-            undead = false;
-            yield return new WaitForSeconds(5f);
-            currHitState = HitStates.Dash;
-            lockHit = false;
-            
-        }
+
         IEnumerator ThrowGetsuga()
         {
             if (getsugaGameobject == null)
