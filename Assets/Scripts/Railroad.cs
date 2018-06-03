@@ -49,27 +49,31 @@ public class Railroad : MonoBehaviour {
     }
     private void Move()
     {
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
+        transform.Translate(Vector3.down * Time.deltaTime * speed);
     }
     IEnumerator MoveReleaseMove()
     {
         StartCoroutine(Release());
         StartCoroutine(Wait());
+        yield return Release();
         stop = false;
-        yield return null;        
     }
     IEnumerator Release()
     {
+        List<GameObject> list = new List<GameObject>();
         //Debug.Log(enemiesAmount);
         for (int i = 0; i < enemiesAmount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(true);
-            transform.GetChild(i).parent = null;
             //Debug.Log(i);
-            StartCoroutine(Wait());
-            //yield return new WaitForSeconds(2);
+            list.Add(transform.GetChild(i).gameObject);
+            yield return new WaitForSeconds(0.1f);
         }
-        yield return new WaitForSeconds(2);
+        foreach(GameObject obj in list)
+        {
+            obj.transform.parent = null;
+        }
+            yield return new WaitForSeconds(2);
     }
     IEnumerator Wait()
     {
