@@ -25,7 +25,7 @@ public class ScoreSystem : MonoBehaviour
 
     void FixedUpdate()
     {
-        timeScore += Time.deltaTime;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         ExtraLife();
         CheckRank(player.score);
         score.text = player.score.ToString("0");

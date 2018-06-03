@@ -42,14 +42,15 @@ public class Bullet : MonoBehaviour {
 					speed = startingSpeed;
 				} 
 				if (hit.collider.gameObject.tag == "Enemy" && playersBullet/*&& ricocheted*/) {
+
                     if (hit.collider.GetComponent<enemy1>() != null)
                     {
-                        hit.collider.GetComponent<enemy1>().SendMessage("Die");
+                        hit.collider.GetComponent<enemy1>().SendMessage("Damage");
                         Destroy(this.gameObject);
                     }
                     if (hit.collider.GetComponent<enemy2>() != null)
                     {
-                        hit.collider.GetComponent<enemy2>().SendMessage("Die");
+                        hit.collider.GetComponent<enemy2>().SendMessage("Damage");
                         Destroy(this.gameObject);
                     }
                     if (hit.collider.GetComponent<RunningRiot.Boss>() != null)
@@ -61,7 +62,6 @@ public class Bullet : MonoBehaviour {
                             Destroy(this.gameObject);
                         }
                     }
-                    
 				}
 				Vector3 reflect = Vector3.Reflect (ray.direction, hit.normal);
 				float rot = 90 - Mathf.Atan2 (reflect.z, reflect.x) * Mathf.Rad2Deg;

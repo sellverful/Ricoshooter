@@ -23,6 +23,7 @@ TagManager:
   - pause
   - Train
   - Stopper
+  - Destroyer
   layers:
   - Default
   - TransparentFX

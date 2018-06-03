@@ -9,7 +9,8 @@ public class enemy2 : MonoBehaviour {
 	[HideInInspector] public enum ShootType{ShotGun,Burst,Sine};
 	public ShootType currShootType = ShootType.Burst;
 	public Transform player;
-	NavMeshAgent agent;
+    private int currHealth = 2;
+    NavMeshAgent agent;
 	public float chaseDistance = 20f;
 	private Vector3 shootDirection;
 	public float errorMargin = 1f;
@@ -26,9 +27,11 @@ public class enemy2 : MonoBehaviour {
 	public AudioClip dieSound;
 	private Animator anim;
 	private AudioSource audioS;
-	// Use this for initialization
+   
 
-	void Start () {
+    // Use this for initialization
+
+    void Start () {
 		audioS = GetComponent<AudioSource> ();
 		anim = GetComponent<Animator> ();
 		agent = GetComponent<NavMeshAgent> ();
@@ -161,8 +164,19 @@ public class enemy2 : MonoBehaviour {
 		if(gameObject.GetComponentInParent<ActivateEnemies> ()!=null)
 			gameObject.GetComponentInParent<ActivateEnemies> ().count++;
 	}
-	void Die(){
+
+
+    void Damage()
+    {
+        currHealth -= 1;
+        if (currHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die(){
 		anim.SetTrigger ("Die");
+		player.GetComponent<PlayerController>().score += 200;
 		currState = State.Die;
 		GetComponent<BoxCollider> ().enabled = false;
 		audioS.PlayOneShot (dieSound);
