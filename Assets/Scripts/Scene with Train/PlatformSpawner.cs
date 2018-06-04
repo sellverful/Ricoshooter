@@ -22,8 +22,8 @@ public class PlatformSpawner : MonoBehaviour {
     {
         if (transform.position.z < generationPoint.position.z)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + platformWidth + distanceBetween);
-            Instantiate(thePlatforms[Random.Range(0, thePlatforms.Length - 1)], transform.position, transform.rotation);
+            transform.position = new Vector3(transform.position.x , transform.position.y, transform.position.z+platformWidth + distanceBetween);
+            Instantiate(thePlatforms[Random.Range(0, thePlatforms.Length - 1)], transform.position, transform.rotation,GameObject.Find("Background").transform);
         }
     }
 }

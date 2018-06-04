@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TrainMove : MonoBehaviour {
     [SerializeField]
-    private float speed;
+    private float speed = 100;
     private bool isAllowedToTrigger;
+    [SerializeField]
+    private bool back;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         isAllowedToTrigger = true;
 
         //Invoke("GetTheHellOuttaHere", 7.0f);
@@ -16,7 +18,14 @@ public class TrainMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector3.down * Time.deltaTime * speed);
+        if (back)
+        {
+            transform.Translate(Vector3.back * Time.deltaTime * speed);
+        } else
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        }
+        
 
 	}
     private void OnTriggerStay(Collider other)

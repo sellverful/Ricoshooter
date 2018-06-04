@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23647792625575668}
   - component: {fileID: 114095759823350932}
   - component: {fileID: 54520998976240884}
+  - component: {fileID: 114758692326889532}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -56,9 +57,10 @@ GameObject:
   - component: {fileID: 4646096830200690}
   - component: {fileID: 33547586383123886}
   - component: {fileID: 23432769890478558}
+  - component: {fileID: 64069337233458428}
   m_Layer: 2
   m_Name: AoE
-  m_TagString: Untagged
+  m_TagString: Destroyer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,8 +89,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1277695908395122}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -49.62733, y: 31.808924, z: 41.144382}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: -33.892525, y: 31.808924, z: 60.21373}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4926265593805160}
   - {fileID: 4646096830200690}
@@ -232,6 +234,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &64069337233458428
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1701124549197508}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &114095759823350932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,7 +261,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   damage: 1
-  destroyInSec: 2
+  destroyInSec: 10
+--- !u!114 &114758692326889532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232163551802976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b2a906fcb17e364a91259e8a2189a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135940786129243590
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -257,7 +284,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.12, z: 0}
 --- !u!198 &198216976408673166
 ParticleSystem:
   m_ObjectHideFlags: 1

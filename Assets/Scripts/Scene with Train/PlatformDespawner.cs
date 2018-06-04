@@ -13,7 +13,7 @@ public class PlatformDespawner : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.z < destroyer.transform.position.z)
+        if (transform.position.z< destroyer.transform.position.z)
         {
             Destroy(gameObject);
         }

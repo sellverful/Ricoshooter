@@ -289,7 +289,7 @@ namespace RunningRiot
             }
             agent.speed = basicMovementSpeed;
             currState = State.Chase;
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(5f);
             currHitState = HitStates.Getsuga;
             lockHit = false;
         }
@@ -314,7 +314,7 @@ namespace RunningRiot
             agent.speed = basicMovementSpeed;
             currState = State.Chase;
             undead = false;
-            yield return new WaitForSeconds(15f);
+            yield return new WaitForSeconds(5f);
             currHitState = HitStates.Dash;
             lockHit = false;
 
