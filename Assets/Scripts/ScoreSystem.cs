@@ -9,7 +9,7 @@ public class ScoreSystem : MonoBehaviour
     public PlayerController player;
     public Text score;
     public Text scoreRank;
-    public Text lifes;
+   // public Text lifes;
 
     private float timeScore = 0;
     private String rank = "";
@@ -29,8 +29,8 @@ public class ScoreSystem : MonoBehaviour
         ExtraLife();
         CheckRank(player.score);
         score.text = player.score.ToString("0");
-        scoreRank.text = rank;
-        lifes.text = "Lifes: " + player.curHealth;
+       //scoreRank.text = rank;
+       // lifes.text = "Lifes: " + player.curHealth;
     }
 
     private void CheckRank(float x)
