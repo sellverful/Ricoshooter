@@ -20,7 +20,7 @@ public class NewSmoothCamera : MonoBehaviour {
 		mousePos.z = ViewDistance;
 		Vector3 CursorPosition = Camera.main.ScreenToWorldPoint(mousePos);
 
-		Vector3 PlayerPosition = Player.position;
+		Vector3 PlayerPosition = Player.GetComponent<Rigidbody>().position;
 
 		Center = new Vector3((PlayerPosition.x + CursorPosition.x) / 2, PlayerPosition.y, (PlayerPosition.z + CursorPosition.z) / 2);
 

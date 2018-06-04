@@ -11,7 +11,7 @@ public class Railroad : MonoBehaviour {
     public bool isHere;
     // Use this for initialization
     void Start () {
-        speed = 50f;
+        speed = 25f;
         enemiesAmount = transform.childCount;
         for (int i = 0; i < enemiesAmount; i++)
         {
