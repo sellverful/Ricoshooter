@@ -27974,7 +27974,7 @@ Prefab:
     - target: {fileID: 114290504147279424, guid: ca4d6c22cdf71d14294a6010771cf682,
         type: 2}
       propertyPath: doorsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca4d6c22cdf71d14294a6010771cf682, type: 2}

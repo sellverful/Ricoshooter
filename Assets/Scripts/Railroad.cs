@@ -23,11 +23,12 @@ public class Railroad : MonoBehaviour {
 	void Update () {
         if (!stop){
             Move();
+            if (doors != null)
+                doors.doorsActive = true;
         }
         if (enemiesAmount == count)
         {
-            if (doors != null)
-                doors.doorsActive = true;
+            Debug.Log("jkh");
             Destroy(gameObject, 2);
         }
     }
