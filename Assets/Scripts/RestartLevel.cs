@@ -21,4 +21,11 @@ public class RestartLevel : MonoBehaviour {
 			SceneManager.LoadScene (scene);
 			Time.timeScale = 1f;
 	}
+    public void LoadMenu()
+    {
+        Debug.Log("Load Menu");
+        //Time.timeScale = 1f;
+        SceneManager.LoadScene("Main");
+        Time.timeScale = 1f;
+    }
 }

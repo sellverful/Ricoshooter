@@ -24,6 +24,14 @@ TagManager:
   - Train
   - Stopper
   - Destroyer
+  - LoseText
+  - FinalCanvas
+  - WinText
+  - DaImage
+  - PWRD
+  - LeftCursor
+  - RightCursor
+  - password1
   layers:
   - Default
   - TransparentFX
