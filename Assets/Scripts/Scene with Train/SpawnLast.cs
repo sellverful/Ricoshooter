@@ -13,7 +13,7 @@ public class SpawnLast : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
-            spawner.SendMessage("SpawnLast");
+            spawner.last = true;
         }
     }
 }
