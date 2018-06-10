@@ -23,21 +23,21 @@ public class RightCursorHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rect.transform.position.y < 224)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && rect.anchoredPosition.y < -1.3f)
         {
-            rect.position = new Vector2(rect.position.x, rect.position.y + 50);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, rect.anchoredPosition.y + 13);
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && rect.transform.position.y > -224)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && rect.anchoredPosition.y > -117)
         {
-            rect.position = new Vector2(rect.position.x, rect.position.y - 50);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, rect.anchoredPosition.y - 13);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) && rect.transform.position.x > -149)
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) && rect.anchoredPosition.x > 27)
         {
-            rect.position = new Vector2(rect.position.x - 50, rect.position.y);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x - 13, rect.anchoredPosition.y);
         }
-        else if (Input.GetKeyUp(KeyCode.RightArrow) && rect.transform.position.x < 149)
+        else if (Input.GetKeyUp(KeyCode.RightArrow) && rect.anchoredPosition.x < 102)
         {
-            rect.position = new Vector2(rect.position.x + 50, rect.position.y);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x + 13, rect.anchoredPosition.y);
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -66,6 +66,7 @@ public class RightCursorHandler : MonoBehaviour
         if (collision.gameObject.tag == "password1" /*&& collision.gameObject.tag == "password2"*/)
         {
             passGet = true;
+            Debug.Log("------PASS RIGHT");
         }
         else
         {
@@ -77,7 +78,7 @@ public class RightCursorHandler : MonoBehaviour
     {
         if (other.gameObject.tag == "password1" /*&& collision.gameObject.tag == "password2"*/)
         {
-            passGet = false;
+            //passGet = false;
         }
     }
 }

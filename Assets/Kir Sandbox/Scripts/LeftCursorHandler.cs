@@ -25,21 +25,21 @@ public class LeftCursorHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyUp(KeyCode.W) && rect.transform.position.y < 225)
+        if (Input.GetKeyUp(KeyCode.W) && rect.anchoredPosition.y < -1.3f)
         {
-            rect.position = new Vector2(rect.position.x, rect.position.y+50);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, rect.anchoredPosition.y+13);
         }
-        else if (Input.GetKeyUp(KeyCode.S) && rect.transform.position.y > -225)
+        else if (Input.GetKeyUp(KeyCode.S) && rect.anchoredPosition.y > -117)
         {
-            rect.position = new Vector2(rect.position.x, rect.position.y - 50);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, rect.anchoredPosition.y - 13);
         }
-        else if (Input.GetKeyUp(KeyCode.A) && rect.transform.position.x > -150)
+        else if (Input.GetKeyUp(KeyCode.A) && rect.anchoredPosition.x > 27)
         {
-            rect.position = new Vector2(rect.position.x - 50, rect.position.y );
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x - 13, rect.anchoredPosition.y );
         }
-        else if (Input.GetKeyUp(KeyCode.D) && rect.transform.position.x < 150)
+        else if (Input.GetKeyUp(KeyCode.D) && rect.anchoredPosition.x < 102)
         {
-            rect.position = new Vector2(rect.position.x + 50, rect.position.y);
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x + 13, rect.anchoredPosition.y);
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -70,6 +70,7 @@ public class LeftCursorHandler : MonoBehaviour {
         if (collision.gameObject.tag == "password1" /*&& collision.gameObject.tag == "password2"*/)
         {
             passGet = true;
+            Debug.Log("PASS LEFT------------");
         }
         else
         {
