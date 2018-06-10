@@ -23,19 +23,19 @@ public class RightCursorHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.UpArrow) && rect.transform.position.y < 225)
+        if (Input.GetKeyUp(KeyCode.UpArrow) && rect.transform.position.y < 224)
         {
             rect.position = new Vector2(rect.position.x, rect.position.y + 50);
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && rect.transform.position.y > -225)
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && rect.transform.position.y > -224)
         {
             rect.position = new Vector2(rect.position.x, rect.position.y - 50);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) && rect.transform.position.x > -150)
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) && rect.transform.position.x > -149)
         {
             rect.position = new Vector2(rect.position.x - 50, rect.position.y);
         }
-        else if (Input.GetKeyUp(KeyCode.RightArrow) && rect.transform.position.x < 150)
+        else if (Input.GetKeyUp(KeyCode.RightArrow) && rect.transform.position.x < 149)
         {
             rect.position = new Vector2(rect.position.x + 50, rect.position.y);
         }

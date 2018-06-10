@@ -32,6 +32,11 @@ TagManager:
   - LeftCursor
   - RightCursor
   - password1
+  - TT1
+  - TT2
+  - SkipUI
+  - Dissapear
+  - Terminal
   layers:
   - Default
   - TransparentFX

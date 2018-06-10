@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 moveVelocity;
     private bool dashCooldown;
 
+
+    /*//added ->//
+    public GameObject minigame;
+    //<- added//*/
+
     private Camera mainCamera;
     private GameObject particleS;
     //added
@@ -68,9 +73,12 @@ public class PlayerController : MonoBehaviour {
         //added
         pause = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenu>();
 		distToGround = GetComponent<Collider> ().bounds.extents.y;
-	}
-	//added
-	void checkHealthAmount(){
+        /*//added ->//
+        minigame.SetActive(false);
+        //<- added//*/
+    }
+    //added
+    void checkHealthAmount(){
 		if (healthImages [0] == null)
 			return;
 		for(int i = 0; i < maxHeartAmount; i++){
@@ -227,10 +235,15 @@ public class PlayerController : MonoBehaviour {
         {
             GameObject.FindGameObjectWithTag("CheckpointManager").SendMessage("ChangeCheckPoint", col.transform);
         }
-	}
+        /*//added ->//
+        if(col.tag == "Terminal" && Input.GetKeyUp(KeyCode.E)){
+            minigame.SetActive(true);
+        }
+        //<- added//*/
+    }
 
-	//deflect 
-	void Deflect(){
+    //deflect 
+    void Deflect(){
 		//deflectCooldownTime -= Time.deltaTime;
 		//if (Input.GetButtonDown ("Deflect")) {
 		//	if (deflectCooldownTime <= 0) {
