@@ -24,6 +24,19 @@ TagManager:
   - Train
   - Stopper
   - Destroyer
+  - LoseText
+  - FinalCanvas
+  - WinText
+  - DaImage
+  - PWRD
+  - LeftCursor
+  - RightCursor
+  - password1
+  - TT1
+  - TT2
+  - SkipUI
+  - Dissapear
+  - Terminal
   layers:
   - Default
   - TransparentFX
