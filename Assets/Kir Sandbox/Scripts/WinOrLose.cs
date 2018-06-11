@@ -30,6 +30,7 @@ public class WinOrLose : MonoBehaviour {
             StartCoroutine(wait());
             win.enabled = false;
             player.enabled = true;
+            Time.timeScale = 1.0f;
         }
         else if (lch.countlose == 3)
         {
@@ -41,6 +42,7 @@ public class WinOrLose : MonoBehaviour {
             StartCoroutine(wait());
             lose.enabled = false;
             player.enabled = true;
+            Time.timeScale = 1.0f;
         }
         /*if (Input.GetKeyUp(KeyCode.Escape) && Time.timeScale == 0.0f)
         {
@@ -49,6 +51,6 @@ public class WinOrLose : MonoBehaviour {
 	}
     IEnumerator wait()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
     }
 }

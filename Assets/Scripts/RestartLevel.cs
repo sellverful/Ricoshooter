@@ -25,7 +25,8 @@ public class RestartLevel : MonoBehaviour {
     {
         Debug.Log("Load Menu");
         //Time.timeScale = 1f;
-        SceneManager.LoadScene("Main");
+        //SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("UITEST");
         Time.timeScale = 1f;
     }
 }

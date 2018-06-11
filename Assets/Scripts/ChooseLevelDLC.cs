@@ -31,4 +31,8 @@ public class ChooseLevelDLC : MonoBehaviour {
     {
         //SceneManager.LoadScene("SecondLevel");
     }
+    public void dlc_shortcut()
+    {
+        SceneManager.LoadScene("TEST");
+    }
 }
