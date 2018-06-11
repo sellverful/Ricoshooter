@@ -20,7 +20,7 @@ public class WeaponHit : MonoBehaviour {
             player.SendMessage("DealDamage" ,1f);
         } else if (other.tag == "Player")
         {
-            Debug.Log("HIT");
+            //Debug.Log("HIT");
         }
     }
 }

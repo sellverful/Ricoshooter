@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour {
 	public bool deflect = false;
 	public float deflectCooldown = 2f;
 	private float deflectCooldownTime = 0f;
-	PauseMenu pause;
+    public float timeScore = 0;
+    PauseMenu pause;
 
 	//movement
 
@@ -135,6 +136,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     Vector3 rememberPosition;
 	void Update () {
+        timeScore += Time.deltaTime * 100;
         if (!dead) {
 			MovePlayer ();
 		}
@@ -151,6 +153,7 @@ public class PlayerController : MonoBehaviour {
 		moveInput = new Vector3 (Input.GetAxisRaw("Horizontal"),0f, Input.GetAxisRaw("Vertical"));
         if (Input.GetButtonDown("Fire2"))
         {
+            score += 200;
             OnDashInput();
         }
         moveVelocity = moveInput * moveSpeed;

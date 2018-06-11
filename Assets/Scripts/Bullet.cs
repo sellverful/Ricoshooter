@@ -15,9 +15,9 @@ public class Bullet : MonoBehaviour {
 	private float time = 0f;
 	private float startingSpeed;
 	public float rotSpeed = 800f;
-    public float maxDistanceFromPlayer = 40f;
+    public float maxDistanceFromPlayer = 35f;
     public float howManyTimesReflected = 0f;
-    public float maxHowManyTimesReflected = 4f;
+    public float maxHowManyTimesReflected = 2f;
     // Use this for initialization
     bool once = true;
 	[HideInInspector]public bool playersBullet = true;
@@ -110,6 +110,7 @@ public class Bullet : MonoBehaviour {
                 }
                 else if (col.GetComponent<RunningRiot.Boss>().undead)
                 {
+                    GetComponent<Renderer>().material.color = Color.red;
                     return;
                 }
             }
@@ -119,5 +120,6 @@ public class Bullet : MonoBehaviour {
         {
             
         }
-	}
+        GetComponent<Renderer>().material.color = Color.red;
+    }
 }

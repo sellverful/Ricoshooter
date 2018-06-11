@@ -85,9 +85,9 @@ public class Gun : MonoBehaviour
     }
     void GunFire()
     {
-        if (!PauseMenu.GameIsPaused || !GetComponentInParent<PlayerController>().dead)
+        if (!PauseMenu.GameIsPaused)
         {
-            if (Input.GetButtonUp("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead)
             {
                 ShootWithGun();
             }
