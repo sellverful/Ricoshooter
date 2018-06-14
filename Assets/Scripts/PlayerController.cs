@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     Vector3 rememberPosition;
 	void Update () {
-        timeScore += Time.deltaTime * 100;
+        timeScore += Time.deltaTime ;
         if (!dead) {
 			MovePlayer ();
 		}
@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void DealDamage(int damage){
-		if (undead)
+		if (undead || invincible)
 			return;
 		curHealth -= damage;
 		StartCoroutine (Undead ());

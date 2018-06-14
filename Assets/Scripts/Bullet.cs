@@ -88,7 +88,7 @@ public class Bullet : MonoBehaviour {
     }
 	void OnTriggerEnter(Collider col){
         if (!enabled) return;
-		if (col.tag == "Player" && player.deflect == false && player.invincible == false && player.undead == false) {
+		if (col.tag == "Player" && player.deflect == false && player.invincible == false ) {
 			player.SendMessage ("DealDamage", 1);
 			Destroy (this.gameObject);
 		} else if (col.tag == "Defence" && playersBullet) {

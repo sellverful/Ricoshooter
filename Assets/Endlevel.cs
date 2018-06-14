@@ -15,6 +15,7 @@ public class Endlevel : MonoBehaviour {
     {
         yield return new WaitForSeconds(1f);
         RestartUI.SetActive(true);
-        Time.timeScale = 1f;
+        yield return new WaitForSeconds(0.1f);
+        Time.timeScale = 0f;
     }
 }

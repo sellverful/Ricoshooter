@@ -40,7 +40,7 @@ public class ScoreEndLevel : MonoBehaviour {
         scoreRank.text = rankFinal;
         rankScoreT.text = rankScore;
         rankTimeT.text = rankTime;  
-        timeScoreText.text = (player.timeScore).ToString("0");
+        timeScoreText.text =  String.Format("{0:0}:{1:00}", Mathf.Floor(player.timeScore / 60), player.timeScore % 60); ;
         // lifes.text = "Lifes: " + player.curHealth;
     }
 
@@ -96,23 +96,23 @@ public class ScoreEndLevel : MonoBehaviour {
     {
         switch ((int)x)
         {
-            case 500:
+            case 50:
                 rankTime = "SSS";
                 checkerT = 5;
                 break;
-            case 1000:
+            case 100:
                 rankTime = "A";
                 checkerT = 4;
                 break;
-            case 3000:
+            case 200:
                 rankTime = "B";
                 checkerT = 3;
                 break;
-            case 4500:
+            case 300:
                 rankTime = "C";
                 checkerT = 2;
                 break;
-            case 5000:
+            case 400:
                 rankTime = "D";
                 checkerT = 1;
                 break;
