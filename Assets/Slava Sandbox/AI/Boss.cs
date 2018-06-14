@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+
 namespace RunningRiot
 {
     public class Boss : MonoBehaviour
@@ -185,6 +187,11 @@ namespace RunningRiot
             }
             startFight = true;
             undead = false;
+        }
+        IEnumerator EndGame()
+        {
+            yield return new WaitForSeconds(5);
+            SceneManager.LoadScene("Titles");
         }
         void BurnTheGround()
         {
@@ -381,6 +388,7 @@ namespace RunningRiot
                 agent.isStopped = true;
                 GetComponent<SpawnRainFire>().enabled = false;
                 enabled = false;
+                StartCoroutine(EndGame());
             }
         }
         void TurnOnHitbox()

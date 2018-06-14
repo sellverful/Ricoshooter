@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DAKKA_DAKKA_DAKKA : MonoBehaviour {
     public GameObject bullet;
+    [SerializeField]
+    private GameObject whereTo;
+
 	// Use this for initialization
 	void Start () {
         
@@ -16,7 +19,6 @@ public class DAKKA_DAKKA_DAKKA : MonoBehaviour {
 	}
     void dakka_dakka()
     {
-        Instantiate(bullet, new Vector3(32.74f, 0.63f, -159.04f), Quaternion.AngleAxis(90, Vector3.up));
-        Instantiate(bullet, new Vector3(32.74f, 0.63f, -163.08f), Quaternion.AngleAxis(90, Vector3.up));
+        Instantiate(bullet, whereTo.transform.position,whereTo.transform.rotation);
     }
 }
