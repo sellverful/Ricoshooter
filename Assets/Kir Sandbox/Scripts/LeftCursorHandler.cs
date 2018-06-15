@@ -14,6 +14,10 @@ public class LeftCursorHandler : MonoBehaviour {
     public RightCursorHandler rch;
     public int countwin;
     public int countlose;
+
+    public bool globalPass;
+
+    public SetPassword sp;
     // Use this for initialization
     void Start () {
         rect = GetComponent<RectTransform>();
@@ -47,15 +51,16 @@ public class LeftCursorHandler : MonoBehaviour {
             {
                 Cursor.sprite = right;
                 countwin++;
+                globalPass = true;
                 Debug.Log("wins  " + countwin);
-                
+                sp.dont = true;
             }
             else
             {
                 Cursor.sprite = wrong;
                 countlose++;
+                globalPass = false;
                 Debug.Log("loses  " + countlose);
-
             }
             Invoke("changeBack", 1f);
         }
