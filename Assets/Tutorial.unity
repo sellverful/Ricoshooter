@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1112,7 +1112,7 @@ Prefab:
       objectReference: {fileID: 1260891639}
     - target: {fileID: 1724798278525762, guid: 9d37f75bcb13fed42bf680194506cdc0, type: 2}
       propertyPath: m_Name
-      value: Cube
+      value: Cube1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9d37f75bcb13fed42bf680194506cdc0, type: 2}
@@ -5630,7 +5630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1049648066149124, guid: 0fd0a10158cd6884ab675d3cebe02e43, type: 2}
       propertyPath: m_Name
-      value: Military (1)
+      value: Military
       objectReference: {fileID: 0}
     - target: {fileID: 1049648066149124, guid: 0fd0a10158cd6884ab675d3cebe02e43, type: 2}
       propertyPath: m_IsActive
