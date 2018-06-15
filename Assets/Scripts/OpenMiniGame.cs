@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class OpenMiniGame : MonoBehaviour {
     public GameObject minigame;
-    public PlayerController player;
+    private PlayerController player;
+    private NewSmoothCamera playerCamera;
 	// Use this for initialization
 	void Start () {
         minigame.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<NewSmoothCamera>();
 	}
 	
 	// Update is called once per frame
@@ -21,6 +23,7 @@ public class OpenMiniGame : MonoBehaviour {
         {
             minigame.SetActive(true);
             player.enabled = false;
+            playerCamera.enabled = false;
         }
     }
 }

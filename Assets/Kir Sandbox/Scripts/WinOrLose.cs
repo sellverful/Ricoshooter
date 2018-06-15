@@ -10,12 +10,16 @@ public class WinOrLose : MonoBehaviour {
     public LeftCursorHandler lch;
     public RightCursorHandler rch;
     public GameObject minigame;
-    public PlayerController player;
+    private PlayerController player;
+    private NewSmoothCamera playerCamera;
+
     // Use this for initialization
     void Start () {
         win.enabled = false;
         lose.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<NewSmoothCamera>();
+        //StartCoroutine(final());
     }
 	
 	// Update is called once per frame
@@ -27,9 +31,47 @@ public class WinOrLose : MonoBehaviour {
             minigame.SetActive(false);
             lch.gameObject.SetActive(false);
             rch.gameObject.SetActive(false);
+            //StartCoroutine(wait());
+            win.enabled = false;
+            player.enabled = true;
+            playerCamera.enabled = true;
+            Time.timeScale = 1.0f;
+        }
+        else if (lch.countlose == 3)
+        {
+            Time.timeScale = 0.0f;
+            lose.enabled = true;
+            minigame.SetActive(false);
+            lch.gameObject.SetActive(false);
+            rch.gameObject.SetActive(false);
+            //StartCoroutine(wait());
+            lose.enabled = false;
+            player.enabled = true;
+            playerCamera.enabled = true;
+            Time.timeScale = 1.0f;
+        }
+        /*if (Input.GetKeyUp(KeyCode.Escape) && Time.timeScale == 0.0f)
+        {
+            SceneManager.LoadScene("Hacc2");
+        }*/
+	}
+    /*IEnumerator wait()
+    {
+        yield return new WaitForSeconds(10);
+    }
+    IEnumerator final()
+    {
+        if (lch.countwin == 3)
+        {
+            Time.timeScale = 0.0f;
+            win.enabled = true;
+            minigame.SetActive(false);
+            lch.gameObject.SetActive(false);
+            rch.gameObject.SetActive(false);
             StartCoroutine(wait());
             win.enabled = false;
             player.enabled = true;
+            playerCamera.enabled = true;
             Time.timeScale = 1.0f;
         }
         else if (lch.countlose == 3)
@@ -42,15 +84,9 @@ public class WinOrLose : MonoBehaviour {
             StartCoroutine(wait());
             lose.enabled = false;
             player.enabled = true;
+            playerCamera.enabled = true;
             Time.timeScale = 1.0f;
         }
-        /*if (Input.GetKeyUp(KeyCode.Escape) && Time.timeScale == 0.0f)
-        {
-            SceneManager.LoadScene("Hacc2");
-        }*/
-	}
-    IEnumerator wait()
-    {
-        yield return new WaitForSeconds(10);
-    }
+        yield return null;
+    }*/
 }
