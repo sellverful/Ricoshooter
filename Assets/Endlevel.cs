@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Endlevel : MonoBehaviour {
-    public GameObject RestartUI;
+    public GameObject endScore;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +14,7 @@ public class Endlevel : MonoBehaviour {
     IEnumerator Restart()
     {
         yield return new WaitForSeconds(1f);
-        RestartUI.SetActive(true);
+        endScore.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         Time.timeScale = 0f;
     }

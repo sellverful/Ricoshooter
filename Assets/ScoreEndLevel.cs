@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class ScoreEndLevel : MonoBehaviour {
 
     public PlayerController player;
-    public Text score;
-    public Text scoreRank;
-    public Text timeScoreText;
-    public Text rankScoreT;
-    public Text rankTimeT;
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI scoreRank;
+    public TextMeshProUGUI timeScoreText;
+    public TextMeshProUGUI rankScoreT;
+    public TextMeshProUGUI rankTimeT;
     // public Text lifes;
 
 
     private String rankScore = "D";
     private String rankTime = "SSS";
     private String rankFinal = "D";
-    private int scoreLife = 1000;
     private float checkerS = 0;
     private float checkerT = 5;
 
@@ -32,7 +32,6 @@ public class ScoreEndLevel : MonoBehaviour {
 
     void FixedUpdate()
     {
-     //   ExtraLife();
         CheckRank(player.score);
         CheckRankTime(player.timeScore);
         CalculateFinalRank();
@@ -68,63 +67,55 @@ public class ScoreEndLevel : MonoBehaviour {
     private void CheckRank(float x)
     {
 
-        switch ((int)x)
-        {
-            case 2000:
-                rankScore = "D";
-                checkerS = 1;
-                break;
-            case 2500:
-                rankScore = "C";
-                checkerS = 2;
-                break;
-            case 3000:
-                rankScore = "B";
-                checkerS = 3;
-                break;
-            case 4500:
-                rankScore = "A";
-                checkerS = 4;
-                break;
-            case 5000:
-                rankScore = "SSS";
-                checkerS = 5;
-                break;
+        if (x >= 500) { 
+            rankScore = "D";
+        checkerS = 1;
         }
+        if (x >= 1000)
+        {
+            rankScore = "C";
+            checkerS = 2;
+        }
+        if (x >= 1500)
+        {
+            rankScore = "B";
+            checkerS = 3;
+        }
+        if (x >= 2000)
+        {
+            rankScore = "A";
+            checkerS = 4;
+        }
+        if (x >= 2500)
+        {
+            rankScore = "SSS";
+            checkerS = 5;
+        }
+        
     }
     private void CheckRankTime(float x)
     {
-        switch ((int)x)
+        Debug.Log(rankTime);
+        if (x >= 60)
         {
-            case 50:
-                rankTime = "SSS";
-                checkerT = 5;
-                break;
-            case 100:
-                rankTime = "A";
-                checkerT = 4;
-                break;
-            case 200:
-                rankTime = "B";
-                checkerT = 3;
-                break;
-            case 300:
-                rankTime = "C";
-                checkerT = 2;
-                break;
-            case 400:
-                rankTime = "D";
-                checkerT = 1;
-                break;
+            rankTime = "A";
+            checkerT = 4;
         }
-    }
-
-    public void ExtraLife()
-    {
-        if (player.score == scoreLife)
+        if (x >= 90)
         {
-            player.curHealth += 1;
-            scoreLife += 1000;
+            rankTime = "B";
+            checkerT = 3;
         }
-    }
+        if (x >= 120)
+        {
+            rankTime = "C";
+            checkerT = 2;
+        }
+        if (x >= 150)
+        {
+            rankTime = "D";
+            checkerT = 1;
+        }
+        }
+    
 }

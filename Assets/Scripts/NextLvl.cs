@@ -5,9 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class NextLvl : MonoBehaviour {
 
-	// Use this for initialization
-	void OnTriggerEnter(Collider col){
-		if(col.tag =="Player")
-			SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
-	}
+    public GameObject endScore;
+    public GameObject score;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Player"))
+            StartCoroutine(Restart());
+    }
+
+    IEnumerator Restart()
+    {
+        yield return new WaitForSeconds(1f);
+        score.SetActive(false);
+        endScore.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Time.timeScale = 0f;
+    }
+    //// Use this for initialization
+    //void OnTriggerEnter(Collider col){
+    //	if(col.tag =="Player")
+    //		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
+    //}
 }

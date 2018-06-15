@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,13 @@ public class ScoreSystem : MonoBehaviour
 {
 
     public PlayerController player;
-    public Text score;
-    public Text scoreRank;
+    public TextMeshProUGUI score;
+    public TextMeshProUGUI scoreRank;
    // public Text lifes;
 
     private float timeScore = 0;
     private String rank = "";
-    private int scoreLife = 1000;
+    private int scoreLife = 5000;
 
     private void Start()
     {
@@ -29,29 +30,31 @@ public class ScoreSystem : MonoBehaviour
         ExtraLife();
         CheckRank(player.score);
         score.text = player.score.ToString("0");
-       //scoreRank.text = rank;
+        scoreRank.text = rank;
        // lifes.text = "Lifes: " + player.curHealth;
     }
 
     private void CheckRank(float x)
     {
-        switch ((int)x)
+        if (x >= 500)
         {
-            case 200:
-                rank = "D";
-                break;
-            case 400:
-                rank = "C";
-                break;
-            case 600:
-                rank = "B";
-                break;
-            case 800:
-                rank = "A";
-                break;
-            case 1000:
-                rank = "SSS";
-                break;
+            rank = "D";
+        }
+        if (x >= 1000)
+        {
+            rank = "C";
+        }
+        if (x >= 1500)
+        {
+            rank = "B";
+        }
+        if (x >= 2000)
+        {
+            rank = "A";
+        }
+        if (x >= 2500)
+        {
+            rank  = "SSS";
         }
     }
 

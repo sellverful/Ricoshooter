@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
 	private float time = 0f;
 	private float startingSpeed;
 	public float rotSpeed = 800f;
-    public float maxDistanceFromPlayer = 35f;
+    public float maxDistanceFromPlayer = 20f;
     public float howManyTimesReflected = 0f;
     public float maxHowManyTimesReflected = 2f;
     // Use this for initialization
@@ -80,7 +80,7 @@ public class Bullet : MonoBehaviour {
         if (Vector3.Distance(transform.position, player.transform.position) > maxDistanceFromPlayer)
         {
             Destroy(gameObject);
-        } else if (howManyTimesReflected > maxHowManyTimesReflected)
+        } else if (howManyTimesReflected >= maxHowManyTimesReflected)
         {
             Destroy(gameObject);
         }
