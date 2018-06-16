@@ -10,6 +10,7 @@ public class SetPassword : MonoBehaviour
     public Image[] pw2;
 
     public LeftCursorHandler lch;
+    public RightCursorHandler rch;
 
     float oldRR;
     float oldRC1;
@@ -126,7 +127,7 @@ public class SetPassword : MonoBehaviour
     public Image image98;
     public Image image99;
 
-    public bool dont;
+   
     // Use this for intialization
     void Start()
     {
@@ -253,11 +254,7 @@ public class SetPassword : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dont)
-        {
-            NeClickajPadla();
-            dont = false;
-        }
+        
     }
     void SetPass()
     {
@@ -300,13 +297,9 @@ public class SetPassword : MonoBehaviour
         //Debug.Log("2 col " + randomCol2);
         allImages[randomRow2, randomCol2 + 1].GetComponent<RandomImage>().changeToPass1(5);
         allImages[randomRow2, randomCol2 + 2].GetComponent<RandomImage>().changeToPass(6);
-        allImages[randomRow2, randomCol2 + 3].GetComponent<RandomImage>().changeToPass(7);        
-    }
+        allImages[randomRow2, randomCol2 + 3].GetComponent<RandomImage>().changeToPass(7);
 
-
-    void NeClickajPadla()
-    {       
-            CancelInvoke("SetPass");
-            InvokeRepeating("SetPass", 5.0f, 5.0f);
+        lch.press = true;
+        rch.press = true;
     }
 }

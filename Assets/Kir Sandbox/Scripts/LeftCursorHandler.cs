@@ -15,7 +15,7 @@ public class LeftCursorHandler : MonoBehaviour {
     public int countwin;
     public int countlose;
 
-    public bool globalPass;
+    public bool press;
 
     public SetPassword sp;
     // Use this for initialization
@@ -45,21 +45,21 @@ public class LeftCursorHandler : MonoBehaviour {
         {
             rect.anchoredPosition = new Vector2(rect.anchoredPosition.x + 13, rect.anchoredPosition.y);
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.Space) && press == true)
         {
             if (passGet == true && rch.passGet == true)
             {
                 Cursor.sprite = right;
                 countwin++;
-                globalPass = true;
+                press = false;
                 Debug.Log("wins  " + countwin);
-                sp.dont = true;
+                
             }
             else
             {
                 Cursor.sprite = wrong;
                 countlose++;
-                globalPass = false;
+                
                 Debug.Log("loses  " + countlose);
             }
             Invoke("changeBack", 1f);

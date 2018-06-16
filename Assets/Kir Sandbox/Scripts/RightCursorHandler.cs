@@ -13,11 +13,14 @@ public class RightCursorHandler : MonoBehaviour
     public Sprite defaultsp;
     public bool passGet;
     public LeftCursorHandler lfh;
+
+    public bool press;
     // Use this for initialization
     void Start()
     {
         rect = GetComponent<RectTransform>();
         //passGet = false;
+        press = true;
     }
 
     // Update is called once per frame
@@ -39,12 +42,13 @@ public class RightCursorHandler : MonoBehaviour
         {
             rect.anchoredPosition = new Vector2(rect.anchoredPosition.x + 13, rect.anchoredPosition.y);
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.Space) && press == true)
         {
             if (passGet == true && lfh.passGet == true)
             {
                 Cursor.sprite = right;
                 //Debug.Log("Right " + passGet);
+                press = false;
             }
             else
             {
