@@ -23,13 +23,13 @@ public class ChooseLevelDLC : MonoBehaviour {
     {
         SceneManager.LoadScene("Tutorial");
     }
-    public void level_1()
+    public void level_4()
     {
         SceneManager.LoadScene("NewLevel");
     }
-    public void level_2()
+    public void level_5()
     {
-        //SceneManager.LoadScene("SecondLevel");
+        SceneManager.LoadScene("Skies");
     }
     public void dlc_shortcut()
     {

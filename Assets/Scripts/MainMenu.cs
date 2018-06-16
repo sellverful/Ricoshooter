@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour {
     public void Start()
     {
         levelchoose.SetActive(false);
-        dlc.SetActive(false);
+
     }
     public void newGame(){
 		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
