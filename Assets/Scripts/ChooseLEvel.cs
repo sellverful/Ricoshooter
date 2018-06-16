@@ -35,5 +35,16 @@ public class ChooseLEvel : MonoBehaviour {
     {
         SceneManager.LoadScene("LastTrial");
     }
-    
+    public void level_4()
+    {
+        SceneManager.LoadScene("NewLevel");
+    }
+    public void level_5()
+    {
+        SceneManager.LoadScene("Skies");
+    }
+    public void dlc_shortcut()
+    {
+        SceneManager.LoadScene("TEST");
+    }
 }

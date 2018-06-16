@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
     public GameObject levelchoose;
-    public GameObject dlc;
+
     public void Start()
     {
         levelchoose.SetActive(false);
@@ -30,9 +30,5 @@ public class MainMenu : MonoBehaviour {
         gameObject.SetActive(false);
         levelchoose.SetActive(true);
     }
-    public void levels_dlc()
-    {
-        gameObject.SetActive(false);
-        dlc.SetActive(true);
-    }
+    
 }
