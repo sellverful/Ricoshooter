@@ -13,6 +13,7 @@ public class WinOrLose : MonoBehaviour {
     private PlayerController player;
     private NewSmoothCamera playerCamera;
 
+    public OpenMiniGame omg;
     // Use this for initialization
     void Start () {
         win.enabled = false;
@@ -36,6 +37,7 @@ public class WinOrLose : MonoBehaviour {
             player.enabled = true;
             playerCamera.enabled = true;
             Time.timeScale = 1.0f;
+            omg.didhewin = true;
         }
         else if (lch.countlose == 3)
         {
@@ -49,6 +51,7 @@ public class WinOrLose : MonoBehaviour {
             player.enabled = true;
             playerCamera.enabled = true;
             Time.timeScale = 1.0f;
+            omg.didhewin = false;
         }
         /*if (Input.GetKeyUp(KeyCode.Escape) && Time.timeScale == 0.0f)
         {

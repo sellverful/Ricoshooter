@@ -266,7 +266,8 @@ public class PlayerController : MonoBehaviour {
 		deflect = false;
 	}
 
-	void DealDamage(int damage){
+    //added public
+    public void DealDamage(int damage){
 		if (undead || invincible)
 			return;
 		curHealth -= damage;

@@ -7,6 +7,8 @@ public class ActivateEnemies : MonoBehaviour {
 	public int enemiesAmount;
 	public int count;
 	public bool isHere;
+    //added
+    public bool allded;
 	// Use this for initialization
 	void Start () {
 		enemiesAmount = transform.childCount;
@@ -27,6 +29,7 @@ public class ActivateEnemies : MonoBehaviour {
 		if (enemiesAmount==count) {
 			if(doors!=null)
 				doors.doorsActive = true;
+            allded = true;
 			Destroy (gameObject, 2);
 		}
 	}
