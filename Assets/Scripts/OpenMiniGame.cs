@@ -6,13 +6,13 @@ public class OpenMiniGame : MonoBehaviour {
     public GameObject minigame;
     private PlayerController player;
     private NewSmoothCamera playerCamera;
-    public ActivateEnemies ifLose;
+    //public ActivateEnemies ifLose;
 
     public bool didhewin;
 
     public DAKKA_DAKKA_DAKKA ddd;
 
-    Collider col;
+    //Collider col;
     //public bool wasplayed;
     // Use this for initialization
     void Start () {
@@ -21,8 +21,8 @@ public class OpenMiniGame : MonoBehaviour {
         playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<NewSmoothCamera>();
         //ifLose.enabled = false;
         //ifLose.gameObject.SetActive(false);
-        col = ifLose.gameObject.GetComponent<Collider>();
-        col.enabled = false;
+        //col = ifLose.gameObject.GetComponent<Collider>();
+        //col.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -35,11 +35,12 @@ public class OpenMiniGame : MonoBehaviour {
         {
             //ifLose.gameObject.SetActive(true);
             //ifLose.enabled = true;
-            col.enabled = true;
-            if(ifLose.allded == true)
+            //col.enabled = true;
+            /*if(ifLose.allded == true)
             {
                 ddd.enabled = false;
-            }
+            }*/
+            ddd.enabled = false;
         }
 	}
     private void OnTriggerStay(Collider other)

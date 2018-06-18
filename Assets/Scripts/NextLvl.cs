@@ -22,7 +22,7 @@ public class NextLvl : MonoBehaviour {
         yield return new WaitForSeconds(0.2f);
         Time.timeScale = 0f;
     }
-    //// Use this for initialization
+    ////Use this for initialization
     //void OnTriggerEnter(Collider col){
     //	if(col.tag =="Player")
     //		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex + 1);
