@@ -37,6 +37,7 @@ TagManager:
   - SkipUI
   - Dissapear
   - Terminal
+  - Health
   layers:
   - Default
   - TransparentFX

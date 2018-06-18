@@ -12,6 +12,10 @@ public class WinOrLose : MonoBehaviour {
     public GameObject minigame;
     private PlayerController player;
     private NewSmoothCamera playerCamera;
+    [SerializeField]
+    private GameObject hackedObject;
+    [SerializeField]
+    private GameObject loseObject;
 
     public OpenMiniGame omg;
     // Use this for initialization
@@ -38,6 +42,10 @@ public class WinOrLose : MonoBehaviour {
             playerCamera.enabled = true;
             Time.timeScale = 1.0f;
             omg.didhewin = true;
+            if (hackedObject != null)
+            {
+                Destroy(hackedObject);
+            }
         }
         else if (lch.countlose == 3)
         {
@@ -52,6 +60,11 @@ public class WinOrLose : MonoBehaviour {
             playerCamera.enabled = true;
             Time.timeScale = 1.0f;
             omg.didhewin = false;
+            if (loseObject != null)
+            {
+                Destroy(hackedObject, 3f);
+                loseObject.SetActive(true);
+            }
         }
         /*if (Input.GetKeyUp(KeyCode.Escape) && Time.timeScale == 0.0f)
         {

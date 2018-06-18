@@ -14,7 +14,7 @@ public class NewSmoothCamera : MonoBehaviour {
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
-    void Update () 
+    void LateUpdate () 
 	{
 		Vector3 mousePos = Input.mousePosition;
 		mousePos.z = ViewDistance;

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +37,9 @@ public class FlyingObject : MonoBehaviour {
 					Debug.Log ("Ricochete vel " + rig.velocity); 
 				}
 			}
-		}
+		} else
+        {
+           Debug.Log(col.tag);
+        }
 	}
 }

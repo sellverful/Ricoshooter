@@ -45,6 +45,6 @@ public class ChooseLEvel : MonoBehaviour {
     }
     public void dlc_shortcut()
     {
-        SceneManager.LoadScene("TEST");
+        SceneManager.LoadScene("BossSecond");
     }
 }

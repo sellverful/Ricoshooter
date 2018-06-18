@@ -279,7 +279,7 @@ public class Boss : MonoBehaviour {
     IEnumerator EndGame()
     {
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene("Titles");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 	IEnumerator DeactivateSpinner(){
 		explosion.gameObject.SetActive (true);

@@ -4,18 +4,19 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SkipUI : MonoBehaviour {
-    PlayerController player;
+    
+    public GameObject player;
     private GameObject skip;
 	// Use this for initialization
 	void Start () {
         skip = GameObject.FindGameObjectWithTag("SkipUI");
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player").transform.Find("Gun").gameObject;
     }
 	
 	// Update is called once per frame
 	void Update () {
         Time.timeScale = 0f;
-        player.enabled = false;
+        player.SetActive(false);
     }
     public void Yes()
     {
@@ -24,7 +25,7 @@ public class SkipUI : MonoBehaviour {
     public void No()
     {
         Time.timeScale = 1f;
-        player.enabled = true;
+        player.SetActive(true);
         Destroy(skip);
     }
 }

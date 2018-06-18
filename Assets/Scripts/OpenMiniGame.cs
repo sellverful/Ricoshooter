@@ -10,7 +10,7 @@ public class OpenMiniGame : MonoBehaviour {
 
     public bool didhewin;
 
-    public DAKKA_DAKKA_DAKKA ddd;
+    //public DAKKA_DAKKA_DAKKA ddd;
 
     //Collider col;
     //public bool wasplayed;
@@ -27,21 +27,21 @@ public class OpenMiniGame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (minigame.activeSelf == false && didhewin == true)
+		/*if (minigame.activeSelf == false && didhewin == true)
         {
             ddd.enabled = false;
         }
         else if (minigame.activeSelf == false && didhewin == false)
         {
-            //ifLose.gameObject.SetActive(true);
-            //ifLose.enabled = true;
-            //col.enabled = true;
-            /*if(ifLose.allded == true)
+            ifLose.gameObject.SetActive(true);
+            ifLose.enabled = true;
+            col.enabled = true;
+            if(ifLose.allded == true)
             {
                 ddd.enabled = false;
-            }*/
+            }
             ddd.enabled = false;
-        }
+        }*/
 	}
     private void OnTriggerStay(Collider other)
     {
