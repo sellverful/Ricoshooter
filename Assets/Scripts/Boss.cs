@@ -179,6 +179,7 @@ public class Boss : MonoBehaviour {
 			au.Play (); // play sound MEGA
 			StartCoroutine (EnableFlyingObject());
 			StartCoroutine (DisableFlyingObject());
+            GameObject.Find("HeartSpawner").SendMessage("spawn");
 			once = true;
 		}
 

@@ -3,5 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckPoint : MonoBehaviour {
-    public int checkpointNumber = 0;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            GameObject.Find("CheckpointManage").SendMessage("ChangeCheckPoint",transform);
+            Destroy(gameObject);
+        }
+    }
 }

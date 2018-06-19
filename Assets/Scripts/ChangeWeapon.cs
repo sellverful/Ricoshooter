@@ -19,7 +19,8 @@ public class ChangeWeapon : MonoBehaviour
         if (once) return;
         if (other.tag == "Player")
         {
-			image.gameObject.SetActive (true);
+            if(image!=null)
+			    image.gameObject.SetActive (true);
             once = true;
             switch (shootType)
             {
@@ -29,7 +30,9 @@ public class ChangeWeapon : MonoBehaviour
                 case 2:
                     other.GetComponentInChildren<Gun>().SendMessage("ChangeShootType", Gun.ShootType.Around);
                     break;
-
+                case 3:
+                    other.GetComponentInChildren<Gun>().SendMessage("ChangeShootType", Gun.ShootType.DoubleGun);
+                    break;
             }
             GetComponent<AudioSource>().enabled = true;
             transform.localScale = Vector3.zero;

@@ -35,11 +35,12 @@ public class FlyingObject : MonoBehaviour {
 					transform.rotation = Quaternion.LookRotation(reflect);
 					rig.velocity = transform.forward * speed;
 					Debug.Log ("Ricochete vel " + rig.velocity); 
-				}
+				} else
+                {
+                    Debug.Log(hit.collider.tag);
+                    Debug.Log(hit.collider.transform.position);
+                }
 			}
-		} else
-        {
-           Debug.Log(col.tag);
-        }
+		}
 	}
 }

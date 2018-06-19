@@ -21,10 +21,5 @@ public class heartHeal : MonoBehaviour
             once = true;
             Destroy(gameObject, 1);
         }
-        else if (other.tag == "Bullet")
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
     }
 }

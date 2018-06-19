@@ -106,12 +106,9 @@ public class Gun : MonoBehaviour
     void SineShotgunShoot()
     {
         shotCounter -= Time.deltaTime;
-        if (isFiring)
+        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead)
         {
-
-            if (shotCounter <= 0)
-            {
-                GetComponent<AudioSource>().PlayOneShot(shurikenSound);
+            GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 for (int i = 0; i < 5; i++)
                 {
                     InstansiateSineShotGunBullet((i - 2) * 5);
@@ -119,41 +116,28 @@ public class Gun : MonoBehaviour
                 shotCounter = timeBetweenShots;
             }
 
-
-        }
-
     }
     void DoubleShoot()
     {
         shotCounter -= Time.deltaTime;
-        if (isFiring)
+        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead)
         {
-
-            if (shotCounter <= 0)
-            {
-                GetComponent<AudioSource>().PlayOneShot(shurikenSound);
+            GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 InstansiateDoubleBullet();
                 shotCounter = timeBetweenShots;
             }
 
-
-        }
+       
     }
     void AroundShoot()
     {
         shotCounter -= Time.deltaTime;
-        if (isFiring)
+        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead)
         {
-
-            if (shotCounter <= 0)
-            {
-                GetComponent<AudioSource>().PlayOneShot(shurikenSound);
+            GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 InstansiateAroundBullet();
                 shotCounter = timeBetweenShotsAround;
             }
-
-
-        }
     }
     void InstansiateSineShotGunBullet(int addRotation)
     {

@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour {
 		checkHealthAmount ();
         moveSpeedTMP = moveSpeed;
         //added
-        pause = GameObject.FindGameObjectWithTag("Pause").GetComponent<PauseMenu>();
+        pause = GameObject.FindGameObjectWithTag("pause").GetComponent<PauseMenu>();
 		distToGround = GetComponent<Collider> ().bounds.extents.y;
         /*//added ->//
         minigame.SetActive(false);
