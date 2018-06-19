@@ -128,7 +128,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -212,6 +212,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 62b5c619408cfb4448d0e791a973a65b, type: 3}
   - {fileID: 8300000, guid: 8aa10ba0f83bad34c825f447e219b97e, type: 3}
   - {fileID: 8300000, guid: 5062a6e65b1b93d4ca88480361e7152b, type: 3}
+  - {fileID: 8300000, guid: 09caaa2db9d8d2740aba38420e58ce09, type: 3}
 --- !u!114 &114672206663287378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fe0dede2b0d034687f9dc9f172890f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: 40
+  Damping: 60
   Player: {fileID: 0}
   Height: 30
   Offset: 0

@@ -55,7 +55,7 @@ Transform:
   m_GameObject: {fileID: 1101592677779168}
   m_LocalRotation: {x: 0.49999917, y: 0.5000009, z: -0.49999917, w: 0.5000009}
   m_LocalPosition: {x: 0.03267098, y: -0.058605194, z: -0.0000000037252903}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1998555, y: 0.1998555, z: 0.1998555}
   m_Children: []
   m_Father: {fileID: 4927514426392294}
   m_RootOrder: 0
@@ -67,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1916542257943096}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.86971, y: 32.287, z: 27.194}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalPosition: {x: -152.4, y: 0.335, z: -31.7}
+  m_LocalScale: {x: 0.70592254, y: 0.70592207, z: 0.70592207}
   m_Children:
   - {fileID: 4128181410487214}
   m_Father: {fileID: 0}
@@ -125,7 +125,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.74, y: 0.865915, z: 1.89}
+  m_Size: {x: 1.04, y: 0.865915, z: 4.08}
   m_Center: {x: 0, y: 0.18295765, z: 0}
 --- !u!82 &82551434310278080
 AudioSource:
@@ -218,7 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f29bb7a202345841ab3a9c1d379bcce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootType: 1
+  image: {fileID: 0}
+  shootType: 2
 --- !u!114 &114587587925140996
 MonoBehaviour:
   m_ObjectHideFlags: 1
