@@ -36,6 +36,7 @@ namespace RunningRiot
         [SerializeField]
         private string currentTrigger = "";
         public GameObject particleSystem;
+        public GameObject particleDie;
         private bool animationOnce = false;
         private bool onceDashLongWait;
         public int multiplier = 1;
@@ -50,13 +51,16 @@ namespace RunningRiot
         [SerializeField]
         private GameObject[] swords;
         [SerializeField]
+        private AudioClip[] clips;
+        [SerializeField]
         private GameObject meleeAoeGameobject;
-
+        private AudioSource audioSource;
         int hp = 5;
 
         // Use this for initialization
         void Start()
         {
+            audioSource = GetComponent<AudioSource>();
             foreach (GameObject sword in swords)
             {
                 sword.SetActive(false);
@@ -107,6 +111,7 @@ namespace RunningRiot
             yield return new WaitForSeconds(1.5f);
             meleeAoeGameobject.GetComponent<Collider>().enabled = true;
             meleeAoeGameobject.GetComponentInChildren<Animation>().Play();
+            audioSource.PlayOneShot(clips[1],0.5f);
             yield return new WaitForSeconds(0.5f);
             meleeAoeGameobject.GetComponentInChildren<Animation>().Play("SwordDown");
             yield return new WaitForSeconds(0.0000000000001f);
@@ -180,6 +185,7 @@ namespace RunningRiot
         IEnumerator start()
         {
             SetTrigger("Start");
+            audioSource.PlayOneShot(clips[0],1f);
             yield return new WaitForSeconds(3f);
             foreach(GameObject sword in swords)
             {
@@ -190,6 +196,10 @@ namespace RunningRiot
         }
         IEnumerator EndGame()
         {
+            audioSource.PlayOneShot(clips[4],1f);
+            yield return new WaitForSeconds(2f);
+            particleDie.SetActive(true);
+            audioSource.PlayOneShot(clips[5],1f);
             yield return new WaitForSeconds(5);
             SceneManager.LoadScene("Titles");
         }
@@ -215,7 +225,7 @@ namespace RunningRiot
         State currentStateIf;
         private bool gotHit;
         private bool rotate;
-
+        private object particles;
 
         void AnimationStates()
         {
@@ -351,7 +361,7 @@ namespace RunningRiot
             {
                 agent.speed = fastMovementSpeed * multiplier;
             }
-            
+            audioSource.PlayOneShot(clips[2],0.1f);
             agent.SetDestination(player.position);
 
             yield return new WaitForSeconds(1f);
@@ -375,8 +385,10 @@ namespace RunningRiot
                 getsuga.transform.rotation = transform.rotation;
                 getsuga.GetComponent<Getsuga>().speed *= multiplier;
             }
+            audioSource.PlayOneShot(clips[3],0.5f);
             yield return new WaitForSeconds(1f/multiplier);
         }
+        bool dieonce;
         void Die()
         {
             if (undead) return;
@@ -388,7 +400,12 @@ namespace RunningRiot
                 agent.isStopped = true;
                 GetComponent<SpawnRainFire>().enabled = false;
                 enabled = false;
-                StartCoroutine(EndGame());
+                if (!dieonce)
+                {
+                    StartCoroutine(EndGame());
+                    dieonce = true;
+                }
+                
             }
         }
         void TurnOnHitbox()
