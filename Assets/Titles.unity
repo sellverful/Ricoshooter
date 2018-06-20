@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -398,13 +398,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Daniel Sadowski\nKyrylo Aleksandrov\nSlava Shiliak\n\nKyrylio Aleksandrio\nSlavio
-    Shiliakio\n\nSlavius Shiliakus\nKyrylius Aleksandrius\n\nKyrylin Aleksandrin\nSlaventin
-    Shiliakin\n\nSlavo De Shiliak\nKyrylo Fon Aleksandrov\n\nKyrylietti Aleksandrione\nSlavetto
-    Shiliakento\n\nIlya \"Religious\" Shynder\nSlava Chin Tai Shiliak\nKyrylo Kun
-    Gai Aleksandrov\nDaniel Sadowski\n\nGalimzhan Shtatbaev\r\nVlad Utkin\r\n\nYoutube
-    videos\nStack overflow\nUnity answers\nEnter the Gungeon\nFuri\nPerturbator\nCarpenter
-    Brut\n"
+  m_Text: "\nKyrylo Aleksandrov\nSlava Shiliak\n\nKyrylio Aleksandrio\nSlavio Shiliakio\n\nSlavius
+    Shiliakus\nKyrylius Aleksandrius\n\nKyrylin Aleksandrin\nSlaventin Shiliakin\n\nSlavo
+    De Shiliak\nKyrylo Fon Aleksandrov\n\nKyrylietti Aleksandrione\nSlavetto Shiliakento\n\nIlya
+    \"Religious\" Shynder\nSlava Chin Tai Shiliak\nKyrylo Kun Gai Aleksandrov\nDaniel
+    Sadowski\n\nGalimzhan Shtatbaev\r\nVlad Utkin\r\n\nYoutube videos\nStack overflow\nUnity
+    answers\nEnter the Gungeon\nFuri\nPerturbator\nCarpenter Brut\n"
 --- !u!222 &797169810
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -549,7 +548,7 @@ MonoBehaviour:
 
 
 
-    Good job, m8
+    GG, m8
 
     (unless you''ve clicked shortcut button)'
 --- !u!222 &884723247
