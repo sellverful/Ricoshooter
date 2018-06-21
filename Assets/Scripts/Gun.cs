@@ -106,7 +106,7 @@ public class Gun : MonoBehaviour
     void SineShotgunShoot()
     {
         shotCounter -= Time.deltaTime;
-        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead)
+        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead && shotCounter < 0)
         {
             GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 for (int i = 0; i < 5; i++)
@@ -120,7 +120,7 @@ public class Gun : MonoBehaviour
     void DoubleShoot()
     {
         shotCounter -= Time.deltaTime;
-        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead)
+        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead && shotCounter < 0)
         {
             GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 InstansiateDoubleBullet();
@@ -132,7 +132,7 @@ public class Gun : MonoBehaviour
     void AroundShoot()
     {
         shotCounter -= Time.deltaTime;
-        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead)
+        if (Input.GetButtonDown("Fire1") && !this.GetComponentInParent<PlayerController>().dead && shotCounter < 0)
         {
             GetComponent<AudioSource>().PlayOneShot(shurikenSound);
                 InstansiateAroundBullet();
