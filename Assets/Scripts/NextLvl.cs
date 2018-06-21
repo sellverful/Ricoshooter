@@ -7,7 +7,10 @@ public class NextLvl : MonoBehaviour {
 
     public GameObject endScore;
     public GameObject score;
-
+    public void Start()
+    {
+        endScore.SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))

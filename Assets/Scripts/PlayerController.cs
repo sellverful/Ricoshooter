@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 moveInput;
 	private Vector3 moveVelocity;
     private bool dashCooldown;
+    private float couldownOfDash = .6f;
+    private float currCooldownDash = 0;
 
 
     /*//added ->//
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour {
     private Camera mainCamera;
     private GameObject particleS;
     //added
+    public Image cooldownImage;
     public Image[] healthImages;
 	public Sprite[] healthSprites;
     public int score = 0;
@@ -75,6 +78,7 @@ public class PlayerController : MonoBehaviour {
         //added
         pause = GameObject.FindGameObjectWithTag("pause").GetComponent<PauseMenu>();
 		distToGround = GetComponent<Collider> ().bounds.extents.y;
+        cooldownImage = GameObject.FindGameObjectWithTag("Cooldown").GetComponent<Image>();
         /*//added ->//
         minigame.SetActive(false);
         //<- added//*/
@@ -149,6 +153,10 @@ public class PlayerController : MonoBehaviour {
         if (!dead) {
 			MovePlayer ();
 		}
+        if(currCooldownDash < couldownOfDash)
+        {
+            ImageCooldown();
+        }
 		GodMode ();
 		RotatePlayer ();
 		Deflect ();
@@ -323,11 +331,16 @@ public class PlayerController : MonoBehaviour {
         }
 
     }
-
+    public void ImageCooldown()
+    {
+            currCooldownDash += Time.deltaTime;
+            cooldownImage.fillAmount = currCooldownDash / couldownOfDash;
+    }
     IEnumerator DashCooldown()
     {
         dashCooldown = true;
-        yield return new WaitForSeconds(.6f);
+        currCooldownDash = 0;
+        yield return new WaitForSeconds(couldownOfDash);
         dashCooldown = false;
     }
     IEnumerator Dash()
@@ -347,5 +360,6 @@ public class PlayerController : MonoBehaviour {
     }
     void FixedUpdate(){
 		myRig.velocity = moveVelocity; 
+    
 	}
 }
