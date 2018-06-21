@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gun : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class Gun : MonoBehaviour
 
     public GameObject laser;
     public Transform firePoint;
+    private Image doubleSprite;
+    private Image sineSprite;
+    private Image aroundSprite;
 
     public AudioClip shurikenSound;
 
@@ -28,7 +32,12 @@ public class Gun : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        aroundSprite = GameObject.Find("HealthBar").transform.Find("Shooting").Find("Around").gameObject.GetComponent<Image>();
+        aroundSprite.fillAmount = 0;
+        doubleSprite = GameObject.Find("HealthBar").transform.Find("Shooting").Find("DoubleGun").gameObject.GetComponent<Image>();
+        doubleSprite.fillAmount = 0;
+        sineSprite = GameObject.Find("HealthBar").transform.Find("Shooting").Find("SineShotgun").gameObject.GetComponent<Image>();
+        sineSprite.fillAmount = 0;
     }
 
     void ButtonPressed()
@@ -64,6 +73,18 @@ public class Gun : MonoBehaviour
     {
         //ButtonPressed ();
         ShootingTypes();
+        switch (currShootType)
+        {
+            case ShootType.Around:
+                aroundSprite.fillAmount -= 1 / boostUpDuration * Time.deltaTime;
+                break;
+            case ShootType.DoubleGun:
+                doubleSprite.fillAmount -= 1 / boostUpDuration * Time.deltaTime;
+                break;
+            case ShootType.SineShotgun:
+                sineSprite.fillAmount -= 1 / boostUpDuration * Time.deltaTime;
+                break;
+        }
     }
     void ShootWithLaser()
     {
@@ -96,6 +117,18 @@ public class Gun : MonoBehaviour
     void ChangeShootType(ShootType shoot)
     {
         currShootType = shoot;
+        switch (currShootType)
+        {
+            case ShootType.Around:
+                aroundSprite.fillAmount = 1;
+                break;
+            case ShootType.DoubleGun:
+                doubleSprite.fillAmount = 1;
+                break;
+            case ShootType.SineShotgun:
+                sineSprite.fillAmount = 1;
+                break;
+        }
         StartCoroutine(ChangeShootTypeBack());
     }
     IEnumerator ChangeShootTypeBack()
