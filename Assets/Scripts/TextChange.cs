@@ -20,7 +20,7 @@ public class TextChange : MonoBehaviour {
     {
         if(other.gameObject.tag == "Bullet")
         {
-            tt1.SetActive(false);
+            //tt1.SetActive(false);
             tt2.SetActive(true);
         }
     }
