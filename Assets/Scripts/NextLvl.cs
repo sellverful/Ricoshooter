@@ -6,15 +6,20 @@ using UnityEngine.SceneManagement;
 public class NextLvl : MonoBehaviour {
 
     public GameObject endScore;
-    public GameObject score;
+    private GameObject score;
     public void Start()
     {
+        score = GameObject.FindGameObjectWithTag("Score");
         endScore.SetActive(false);
+        
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag.Equals("Player"))
+        {
+            other.GetComponent<PlayerController>().levelEnd = true;
             StartCoroutine(Restart());
+        }
     }
 
     IEnumerator Restart()
@@ -22,8 +27,8 @@ public class NextLvl : MonoBehaviour {
         yield return new WaitForSeconds(1f);
         score.SetActive(false);
         endScore.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        Time.timeScale = 0f;
+        //yield return new WaitForSeconds(0.2f);
+        //Time.timeScale = 0f;
     }
     ////Use this for initialization
     //void OnTriggerEnter(Collider col){

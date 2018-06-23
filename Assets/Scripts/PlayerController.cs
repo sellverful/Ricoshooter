@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour {
     [HideInInspector]
     public float timeScore = 0;
     PauseMenu pause;
+    public bool levelEnd = false;
 
 	//movement
 
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour {
         moveSpeedTMP = moveSpeed;
         //added
         pause = GameObject.FindGameObjectWithTag("pause").GetComponent<PauseMenu>();
+
 		distToGround = GetComponent<Collider> ().bounds.extents.y;
         cooldownImage = GameObject.FindGameObjectWithTag("Cooldown").GetComponent<Image>();
         /*//added ->//
@@ -149,7 +151,11 @@ public class PlayerController : MonoBehaviour {
     // Update is called once per frame
     Vector3 rememberPosition;
 	void Update () {
-        timeScore += Time.deltaTime;
+        if (!levelEnd)
+        {
+            timeScore += Time.deltaTime;
+        }
+        
         if (!dead) {
 			MovePlayer ();
 		}

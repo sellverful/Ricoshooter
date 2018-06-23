@@ -38,6 +38,8 @@ TagManager:
   - Dissapear
   - Terminal
   - Health
+  - Cooldown
+  - Score
   layers:
   - Default
   - TransparentFX
