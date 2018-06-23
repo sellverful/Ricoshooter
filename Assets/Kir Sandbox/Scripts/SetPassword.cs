@@ -248,7 +248,7 @@ public class SetPassword : MonoBehaviour
         allImages[9, 9] = image99;
 
 
-        InvokeRepeating("SetPass", 2.0f, 5.0f);
+        InvokeRepeating("SetPass", 1.0f, 5.0f);
     }
 
     // Update is called once per frame

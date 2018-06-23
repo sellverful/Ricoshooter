@@ -20,6 +20,7 @@ public class SkipUI : MonoBehaviour {
     }
     public void Yes()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void No()

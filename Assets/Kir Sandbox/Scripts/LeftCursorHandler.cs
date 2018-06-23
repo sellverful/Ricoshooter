@@ -17,7 +17,18 @@ public class LeftCursorHandler : MonoBehaviour {
 
     public bool press;
 
-    public SetPassword sp;
+    public Image[] rightpress;
+    public Image[] wrongpress;
+
+    public Image r0;
+    public Image r1;
+    public Image r2;
+
+    public Image w0;
+    public Image w1;
+    public Image w2;
+
+    //public SetPassword sp;
     // Use this for initialization
     void Start () {
         rect = GetComponent<RectTransform>();
@@ -25,6 +36,26 @@ public class LeftCursorHandler : MonoBehaviour {
         countwin = 0;
         countlose = 0;
         //passGet = false;
+
+        rightpress = new Image[3];
+        wrongpress = new Image[3];
+
+        rightpress[0] = r0;
+        rightpress[1] = r1;
+        rightpress[2] = r2;
+
+        wrongpress[0] = w0;
+        wrongpress[1] = w1;
+        wrongpress[2] = w2;
+
+        r0.enabled = false;
+        r1.enabled = false;
+        r2.enabled = false;
+
+        w0.enabled = false;
+        w1.enabled = false;
+        w2.enabled = false;
+
     }
 	
 	// Update is called once per frame
@@ -51,6 +82,7 @@ public class LeftCursorHandler : MonoBehaviour {
             {
                 Cursor.sprite = right;
                 countwin++;
+                rightpress[countwin - 1].enabled = true;
                 press = false;
                 Debug.Log("wins  " + countwin);
                 
@@ -59,7 +91,7 @@ public class LeftCursorHandler : MonoBehaviour {
             {
                 Cursor.sprite = wrong;
                 countlose++;
-                
+                wrongpress[countlose - 1].enabled = true;
                 Debug.Log("loses  " + countlose);
             }
             Invoke("changeBack", 1f);
