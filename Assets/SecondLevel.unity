@@ -2537,7 +2537,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a792762246421814b9b893a7e580ea87, type: 2}
+      objectReference: {fileID: 2100000, guid: bdadbd86e36176342bd968015867f5e5, type: 2}
     - target: {fileID: 114319892449912120, guid: 94f4723cb7cbcb641ad383bfa21a44b5,
         type: 2}
       propertyPath: endScore

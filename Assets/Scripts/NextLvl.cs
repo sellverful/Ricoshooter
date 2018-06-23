@@ -17,6 +17,7 @@ public class NextLvl : MonoBehaviour {
     {
         if (other.tag.Equals("Player"))
         {
+            Debug.Log("Entering new Level");
             other.GetComponent<PlayerController>().levelEnd = true;
             StartCoroutine(Restart());
         }
