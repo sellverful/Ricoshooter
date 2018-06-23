@@ -7792,7 +7792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.56, y: 18.856}
+  m_AnchoredPosition: {x: 2.56, y: 18.96}
   m_SizeDelta: {x: 523.867, y: 770.939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1024773204
@@ -7829,7 +7829,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: Press E to hack the terminal. Use WASD and arrow keys to place cursors on
     password, then press Space yo lock them. Lock cursors three times sucessfully
-    to win the game. You can miss locking only three times.
+    to win the game. You can miss only three times.
 --- !u!222 &1024773205
 CanvasRenderer:
   m_ObjectHideFlags: 0

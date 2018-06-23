@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -3451,7 +3451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScore: {fileID: 1266382874}
-  score: {fileID: 2045930426}
 --- !u!23 &133426345
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11274,6 +11273,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca4d6c22cdf71d14294a6010771cf682, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &290863337 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1259756080664784, guid: d8b6fb01c4ddf244d806c84a58e78d84,
+    type: 2}
+  m_PrefabInternal: {fileID: 316512024}
 --- !u!1 &297919205
 GameObject:
   m_ObjectHideFlags: 0
@@ -36981,7 +36985,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4687852305897098, guid: a50215f0ef650c440ac618f24976e6b6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 64.1
+      value: 51.1
       objectReference: {fileID: 0}
     - target: {fileID: 4687852305897098, guid: a50215f0ef650c440ac618f24976e6b6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -36989,7 +36993,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4687852305897098, guid: a50215f0ef650c440ac618f24976e6b6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -428.86
+      value: -343.9
       objectReference: {fileID: 0}
     - target: {fileID: 4687852305897098, guid: a50215f0ef650c440ac618f24976e6b6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -37026,6 +37030,11 @@ Prefab:
       propertyPath: healthImages.Array.data[2]
       value: 
       objectReference: {fileID: 1683621125}
+    - target: {fileID: 114363844485082964, guid: a50215f0ef650c440ac618f24976e6b6,
+        type: 2}
+      propertyPath: RestartUI
+      value: 
+      objectReference: {fileID: 290863337}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a50215f0ef650c440ac618f24976e6b6, type: 2}
   m_IsPrefabParent: 0
@@ -43931,11 +43940,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ca4d6c22cdf71d14294a6010771cf682, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2045930426 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1043383117719138, guid: c74fc75a26d35d24baadb51944e8d46f,
-    type: 2}
-  m_PrefabInternal: {fileID: 530987298}
 --- !u!1 &2049517650
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1949,6 +1949,26 @@ Prefab:
     - target: {fileID: 1953893115120410, guid: e4d6892edde41c5438d57537e0a6fb49, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 65590893067125294, guid: e4d6892edde41c5438d57537e0a6fb49,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 11.725792
+      objectReference: {fileID: 0}
+    - target: {fileID: 65590893067125294, guid: e4d6892edde41c5438d57537e0a6fb49,
+        type: 2}
+      propertyPath: m_Center.x
+      value: -5.3628993
+      objectReference: {fileID: 0}
+    - target: {fileID: 65590893067125294, guid: e4d6892edde41c5438d57537e0a6fb49,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.0000002720458
+      objectReference: {fileID: 0}
+    - target: {fileID: 65590893067125294, guid: e4d6892edde41c5438d57537e0a6fb49,
+        type: 2}
+      propertyPath: m_Center.z
+      value: 0.00000031965368
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4d6892edde41c5438d57537e0a6fb49, type: 2}
@@ -14519,11 +14539,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4577399988871156, guid: e4d6892edde41c5438d57537e0a6fb49,
     type: 2}
   m_PrefabInternal: {fileID: 849702505}
---- !u!1 &697428248 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1043383117719138, guid: c74fc75a26d35d24baadb51944e8d46f,
-    type: 2}
-  m_PrefabInternal: {fileID: 943990082}
 --- !u!1 &706614431
 GameObject:
   m_ObjectHideFlags: 0
@@ -19311,7 +19326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScore: {fileID: 1161940398}
-  score: {fileID: 697428248}
 --- !u!23 &915477314
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19942,7 +19956,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endScore: {fileID: 1161940398}
-  score: {fileID: 697428248}
 --- !u!4 &936218179 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4755286094604912, guid: c48eed2fffd54a84e9938d47ea49e336,
