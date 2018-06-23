@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -7483,6 +7483,11 @@ Prefab:
       propertyPath: m_Name
       value: Room8
       objectReference: {fileID: 0}
+    - target: {fileID: 114319892449912120, guid: 94f4723cb7cbcb641ad383bfa21a44b5,
+        type: 2}
+      propertyPath: endScore
+      value: 
+      objectReference: {fileID: 1679526416}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94f4723cb7cbcb641ad383bfa21a44b5, type: 2}
   m_IsPrefabParent: 0
@@ -25108,6 +25113,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8b6fb01c4ddf244d806c84a58e78d84, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1679526416 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1974309809566568, guid: d8b6fb01c4ddf244d806c84a58e78d84,
+    type: 2}
+  m_PrefabInternal: {fileID: 1679526415}
 --- !u!1 &1685420425
 GameObject:
   m_ObjectHideFlags: 0
