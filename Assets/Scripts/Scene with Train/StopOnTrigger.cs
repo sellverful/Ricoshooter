@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class StopOnTrigger : MonoBehaviour {
     public TrainMove sceneMovement;
-	// Use this for initialization
-	void Start () {
+    public GameObject[] deathColliders;
+    // Use this for initialization
+    void Start () {
 		
 	}
 
@@ -14,6 +15,11 @@ public class StopOnTrigger : MonoBehaviour {
         if (other.tag == "Train")
         {
             sceneMovement.enabled = false;
+            foreach(GameObject obj in deathColliders)
+            {
+                Destroy(obj);
+            }
+           
         }
         
     }
