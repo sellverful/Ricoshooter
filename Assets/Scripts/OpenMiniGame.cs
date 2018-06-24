@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class OpenMiniGame : MonoBehaviour {
     public GameObject minigame;
-    private PlayerController player;
-    private NewSmoothCamera playerCamera;
+    public PlayerController player;
+    public NewSmoothCamera playerCamera;
     //public ActivateEnemies ifLose;
 
     public bool didhewin;
@@ -15,16 +15,15 @@ public class OpenMiniGame : MonoBehaviour {
     //Collider col;
     //public bool wasplayed;
     // Use this for initialization
-    void Start () {
+    void Awake () {
         minigame.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<NewSmoothCamera>();
+        
         //ifLose.enabled = false;
         //ifLose.gameObject.SetActive(false);
         //col = ifLose.gameObject.GetComponent<Collider>();
         //col.enabled = false;
     }
-	
 	// Update is called once per frame
 	void Update () {
 		/*if (minigame.activeSelf == false && didhewin == true)
@@ -45,7 +44,8 @@ public class OpenMiniGame : MonoBehaviour {
 	}
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.tag == "Player" && Input.GetKeyUp(KeyCode.E))
+        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<NewSmoothCamera>();
+        if (other.gameObject.tag == "Player" && Input.GetKeyUp(KeyCode.E))
         {
             minigame.SetActive(true);
             player.enabled = false;
