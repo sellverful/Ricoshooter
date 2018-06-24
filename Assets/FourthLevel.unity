@@ -9122,6 +9122,10 @@ Prefab:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011470600780, guid: dbdd1cfbaf7431f4fa51a3590604bdd5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbdd1cfbaf7431f4fa51a3590604bdd5, type: 2}
   m_IsPrefabParent: 0
@@ -11728,6 +11732,10 @@ Prefab:
       propertyPath: m_Name
       value: ATM_Green (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011470600780, guid: dbdd1cfbaf7431f4fa51a3590604bdd5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbdd1cfbaf7431f4fa51a3590604bdd5, type: 2}
   m_IsPrefabParent: 0
@@ -13811,6 +13819,10 @@ Prefab:
     - target: {fileID: 1000011470600780, guid: dbdd1cfbaf7431f4fa51a3590604bdd5, type: 2}
       propertyPath: m_Name
       value: ATM_Green (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011470600780, guid: dbdd1cfbaf7431f4fa51a3590604bdd5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dbdd1cfbaf7431f4fa51a3590604bdd5, type: 2}
