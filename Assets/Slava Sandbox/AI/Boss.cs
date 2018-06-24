@@ -9,7 +9,7 @@ namespace RunningRiot
 {
     public class Boss : MonoBehaviour
     {
-        public float health = 300;
+        public float health = 1000;
         public float currentHealth;
         private float myWidth;
         [HideInInspector]
@@ -90,6 +90,13 @@ namespace RunningRiot
                 Damaging();
                 if(currState != State.Hit)
                     IfPlayerNear();
+            }
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Attack") && currPhase == Phase.Third)
+            {
+                anim.speed = 2;
+            } else
+            {
+                anim.speed = 1;
             }
         }
         bool oncePlayerNear = false;
