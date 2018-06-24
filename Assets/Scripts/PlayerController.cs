@@ -123,13 +123,15 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 	}
-    void HealHearts()
+    void HealHearts(int heal)
     {
-        if (healthImages[0] == null || curHealth==3)
+        curHealth += heal;
+        if (healthImages[0] == null)
             return;
         bool empty = false;
         int i = 0;
-        foreach (Image image in healthImages)
+        healthImages[curHealth-1].sprite = healthSprites[2];
+        /*foreach (Image image in healthImages)
         {
             if (empty)
             {
@@ -145,7 +147,8 @@ public class PlayerController : MonoBehaviour {
                 image.sprite = healthSprites[imageIndex];
                 empty = true;
             }
-        }
+        }*/
+        
     }
     //added
     // Update is called once per frame
@@ -303,8 +306,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (dead || curHealth == 3)
             return;
-        curHealth += heal;
-        HealHearts();
+        HealHearts(heal);
     }
     IEnumerator Restart()
     {
