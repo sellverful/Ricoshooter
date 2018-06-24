@@ -20,7 +20,9 @@ public class ActivateEnemies : MonoBehaviour {
 	void OnTriggerEnter(Collider col){
         if (!enabled) return;
 		if (col.tag == "Player") {
+            
 			for (int i = 0; i < enemiesAmount; i++) {
+                Debug.Log("Maim! Kill! Burn!");
 				transform.GetChild (i).gameObject.SetActive (true);
 			}
 		}
