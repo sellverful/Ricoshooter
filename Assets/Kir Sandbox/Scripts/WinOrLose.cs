@@ -45,7 +45,9 @@ public class WinOrLose : MonoBehaviour {
             if (hackedObject != null)
             {
                 Destroy(hackedObject);
+                
             }
+            Destroy(gameObject);
         }
         else if (lch.countlose == 3)
         {
@@ -65,6 +67,7 @@ public class WinOrLose : MonoBehaviour {
                 Destroy(hackedObject, 3f);
                 loseObject.SetActive(true);
             }
+            Destroy(gameObject);
         }
         /*if (Input.GetKeyUp(KeyCode.Escape) && Time.timeScale == 0.0f)
         {
