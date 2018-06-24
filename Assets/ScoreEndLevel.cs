@@ -95,7 +95,7 @@ public class ScoreEndLevel : MonoBehaviour {
     }
     private void CheckRankTime(float x)
     {
-        Debug.Log(rankTime);
+       // Debug.Log(rankTime);
         if (x >= 60)
         {
             rankTime = "A";

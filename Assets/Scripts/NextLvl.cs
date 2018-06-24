@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 public class NextLvl : MonoBehaviour {
 
     public GameObject endScore;
-    private GameObject score;
+    public GameObject score;
     public void Start()
     {
         score = GameObject.FindGameObjectWithTag("Score");
         endScore.SetActive(false);
-        
     }
     private void OnTriggerEnter(Collider other)
     {

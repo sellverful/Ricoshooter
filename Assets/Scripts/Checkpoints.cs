@@ -19,7 +19,7 @@ public class Checkpoints : MonoBehaviour {
         if (_instance == null)
         {
             currentScene = SceneManager.GetActiveScene().name;
-            Debug.Log(currentScene);
+  //          Debug.Log(currentScene);
             _instance = this;
         }
         else

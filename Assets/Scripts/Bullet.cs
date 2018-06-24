@@ -95,7 +95,7 @@ public class Bullet : MonoBehaviour {
 			playersBullet = false;
 			if (col.GetComponent<ShieldDeflect> () != null)
 				col.GetComponent<ShieldDeflect> ().SendMessage ("ReceiveDamage");
-			GetComponent<Renderer> ().material.color = Color.red;
+			//GetComponent<Renderer> ().material.color = Color.red;
 		} else if (col.tag == "Enemy" && playersBullet) {
 			if(col.GetComponent<enemy1>()!=null)
 				col.GetComponent<enemy1>().SendMessage ("Die");
@@ -110,7 +110,7 @@ public class Bullet : MonoBehaviour {
                 }
                 else if (col.GetComponent<RunningRiot.Boss>().undead)
                 {
-                    GetComponent<Renderer>().material.color = Color.red;
+                    //GetComponent<Renderer>().material.color = Color.red;
                     return;
                 }
             }
@@ -120,6 +120,5 @@ public class Bullet : MonoBehaviour {
         {
             
         }
-        GetComponent<Renderer>().material.color = Color.red;
     }
 }
