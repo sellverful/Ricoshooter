@@ -406,13 +406,13 @@ namespace RunningRiot
                 SetTrigger("Death");
                 agent.isStopped = true;
                 GetComponent<SpawnRainFire>().enabled = false;
-                enabled = false;
+                
                 if (!dieonce)
                 {
                     StartCoroutine(EndGame());
                     dieonce = true;
                 }
-                
+                enabled = false;
             }
         }
         void TurnOnHitbox()
