@@ -12,7 +12,7 @@ public class ShieldDeflectSimple : MonoBehaviour {
 		void OnTriggerEnter(Collider col){
 			if (col.tag == "Bullet") {
 				col.transform.LookAt (GameObject.FindGameObjectWithTag ("Player").transform.position);
-			if(col.GetComponent<Bullet>()!=null || col.GetComponent<SineBulletScript>().playersBullet)
+			if(col.GetComponent<Bullet>()!=null || col.GetComponent<SineBulletScript>()!=null)
 				ReceiveDamage ();
 			}
 		}
