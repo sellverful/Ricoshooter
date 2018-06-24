@@ -6262,6 +6262,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4592888307878838, guid: d95ab3218cff28a4aaec6d035fcba42e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d95ab3218cff28a4aaec6d035fcba42e, type: 2}
   m_IsPrefabParent: 0
@@ -19968,7 +19972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d5ceff3b3f7a24888b942fe0875f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endScore: {fileID: 0}
+  endScore: {fileID: 961709680}
   score: {fileID: 0}
 --- !u!4 &936218179 stripped
 Transform:
