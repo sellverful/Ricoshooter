@@ -209,6 +209,7 @@ namespace RunningRiot
             audioSource.PlayOneShot(clips[5],1f);
             yield return new WaitForSeconds(5);
             SceneManager.LoadScene("Titles");
+
         }
         void BurnTheGround()
         {
@@ -395,10 +396,10 @@ namespace RunningRiot
             audioSource.PlayOneShot(clips[3],0.5f);
             yield return new WaitForSeconds(1f/multiplier);
         }
-        bool dieonce;
+        public bool dieonce;
         void Die()
         {
-            if (undead) return;
+            if (undead || currentHealth <= 0) return;
             currentHealth -= 50f;
             if(currentHealth <= 0)
             {
@@ -412,7 +413,7 @@ namespace RunningRiot
                     StartCoroutine(EndGame());
                     dieonce = true;
                 }
-                enabled = false;
+                
             }
         }
         void TurnOnHitbox()
