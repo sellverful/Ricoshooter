@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene("Titles");
     }
 	public void shortcut(){
-		SceneManager.LoadScene("EnemyTest");
+		SceneManager.LoadScene("FirstBoss");
 	}
     public void levels()
     {
