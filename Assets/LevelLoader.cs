@@ -30,4 +30,19 @@ public class LevelLoader : MonoBehaviour {
         }
         
     }
+    public IEnumerator LoadAsynchronously(string scene)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(scene);
+        endScore.SetActive(false);
+        loadingScreen.SetActive(true);
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+
+            slider.value = progress;
+            yield return null;
+        }
+
+    }
 }
